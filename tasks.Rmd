@@ -4,7 +4,7 @@ author: "A. Fidalgo"
 date: 'Last update: `r format(Sys.time(), "%H:%m, %B %d, %Y")`'
 output:
   pdf_document:
-    highlight: "zenburn"
+    highlight: "tango"
     number_sections: yes
     toc: yes
   html_document:
@@ -28,30 +28,21 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# The section i forgot
+# March 15 
 
-Text
+## Check your installation
 
+Create a new Rmd file _File > New File > R Markdown_. And then click on Knitr, possibly by chosing the output format (i.e. Knit to...)
 
-# Introduction \label{sect:intro}
+If needed, install required packages (e.g., `knitr`).
 
-
-```{r, echo=TRUE}
-library(readxl)
-df <- read_excel("my_age_data.xlsx")
-2 * 8
+```{r, eval=FALSE}
+install.packages("knitr")
 ```
 
-The average age in this class `r round(mean(df$age),2)` (and the oldest person was `r max(df$age)`).
+## Create own Rmd file
 
-
-
-
-Text...
-
-# My Section
-
-For explanations, see Section \ref{sect:intro}. 
+Various ways... Adapting the default Rmd or copy from the class GitHub.
 
 
 
