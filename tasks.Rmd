@@ -1,0 +1,57 @@
+---
+title: "Tasks"
+author: "A. Fidalgo"
+date: 'Last update: `r format(Sys.time(), "%H:%m, %B %d, %Y")`'
+output:
+  pdf_document:
+    highlight: "zenburn"
+    number_sections: yes
+    toc: yes
+  html_document:
+    toc: no
+  html_notebook:
+    code_folding: hide
+    highlight: tango
+    number_sections: no
+    theme: cerulean
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  word_document:
+    toc: no
+    toc_depth: '2'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The section i forgot
+
+Text
+
+
+# Introduction \label{sect:intro}
+
+
+```{r, echo=TRUE}
+library(readxl)
+df <- read_excel("my_age_data.xlsx")
+2 * 8
+```
+
+The average age in this class `r round(mean(df$age),2)` (and the oldest person was `r max(df$age)`).
+
+
+
+
+Text...
+
+# My Section
+
+For explanations, see Section \ref{sect:intro}. 
+
+
+
