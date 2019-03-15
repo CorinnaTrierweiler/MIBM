@@ -1,0 +1,5 @@
+\usepackage{totcount}
+\regtotcounter{section}
+\makeatletter
+    \renewcommand{\thesection}{\number\numexpr\c@section@totc-\c@section+1\relax}
+\makeatother
