@@ -1,0 +1,52 @@
+---
+title: "Illustrating 'rr' and 'dd' with a Rmd file"
+author: "A. Fidalgo"
+date: 'Last update: `r format(Sys.time(), "%H:%m, %B %d, %Y")`'
+output:
+  bookdown::pdf_document2:
+    highlight: "tango"
+    number_sections: yes
+    toc: yes
+  html_notebook:
+    code_folding: hide
+    highlight: tango
+    number_sections: no
+    theme: cerulean
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  word_document:
+    toc: no
+    toc_depth: '2'
+  html_document:
+    toc: no
+  pdf_document:
+    highlight: "tango"
+    number_sections: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Introduction {#intro}
+
+
+```{r, echo=TRUE}
+library(readxl)
+df <- read_excel("my_age_data.xlsx")
+2 * 8
+```
+
+The average age in this class `r round(mean(df$age),2)` (and the oldest person was `r max(df$age)`).
+
+# Middle section
+
+Section \@ref(intro) is very simple.
+
+
+

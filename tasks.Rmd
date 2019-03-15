@@ -1,7 +1,7 @@
 ---
-title: "Tasks"
+title: "Ongoing Tasks"
 author: "A. Fidalgo"
-date: 'Last update: `r format(Sys.time(), "%H:%m, %B %d, %Y")`'
+date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%m")`'
 output:
   pdf_document:
     highlight: "tango"
@@ -28,11 +28,26 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# March 15 
+--- 
+This document is thread of the tasks that structure our class. Of course, not all of them will be documented here. It would be impossible to keep such a level of detail. But those below are certainly compulsory benchmarks.  
+Notice that the file will be updated in reverse chronological order (last section entries appear first; normal order _within_ the section). That is meant to help follow the thread. The table of contents, specially on HTML-like formats, will be very useful to navigate the tasks.  
 
-## Check your installation
 
-Create a new Rmd file _File > New File > R Markdown_. And then click on Knitr, possibly by chosing the output format (i.e. Knit to...)
+# Homework for March 22
+
+## Train the workflow
+
+Play around with the example that we did in class to illustrate **reproducible research** (rr) and **dynamic documents** (dd).   
+The file is on GitHub, but I slightly modified the YAML in order to allow the illustration of cross-references of sections. This new format (`bookdown::pdf_document2`) requires a R package. Hence, you need to install it with `install.packages('bookdown')` or by using the menu _Tools> Install Packages..._.
+
+
+
+# Lecture on March 15 
+
+## Check your R/Rstudio/Latex installation
+
+Create a new Rmd file _File> New File> R Markdown_. And then click on Knitr, possibly by chosing the output format on the scroll down menu (i.e., Knit to...).  
+
 
 If needed, install required packages (e.g., `knitr`).
 
@@ -40,20 +55,66 @@ If needed, install required packages (e.g., `knitr`).
 install.packages("knitr")
 ```
 
+Notice that, in order to create a pdf document, you must have a Latex distribution installed; similarly for Word output, Microsoft Word is necessary.
+
 ## Create own Rmd file
 
-Various ways... Adapting the default Rmd or copy from the class GitHub.
+Notice that everytime such new file is created with the menu, it comes with  pre-populated content. It can help, but it can also be annoying because you need first to erase it and start writing your stuff.  
+
+Your first Rmd can be a change in this default content or a copy from the class GitHub (or your very own).
 
 
 ## Create class folders
 
-In your machine, create a folder for this class. Within that folder, create a folder for your book.  
+In your machine, create a folder for this class. Within that folder, create a folder for your book. Members of the same group must have the **same name** for that book folder.   
 Put your first Rmd file into your book folder.
+
+
 
 ## Create your project
 
-_File > New project > 
+_File> New project> Existing Directory_ and chose that book folder.  
+Now, everytime you create content for your book, you must start a Rstudio session _File> Open Project..._  
+All the files of the project are the files of the folder, and vice versa.
 
+
+
+
+# Prior to the first Lecture 
+
+## Install applications
+
+Please download the following FREE applications, available on all platforms:
+
+  1. [R (https://cran.uni-muenster.de/)](https://cran.uni-muenster.de/) 
+  2. [RStudio, free Desktop version (https://www.rstudio.com/products/rstudio/download/#download)](https://www.rstudio.com/products/rstudio/download/#download)
+  3. [A Latex distribution](https://www.latex-project.org/get/) (e.g., MacTex for Mac or MiKTeX for Windows machines) 
+
+The first two are easily and quickly installed. The last is a very large program (a few Gb) and needs time to install.
+
+
+
+
+# Planned tasks {-}
+
+This is a very incomplete list of tasks that will enter our workflow at some point. They are mentioned here for a reference.
+
+## Install a Git application {-}
+
+Another application needed in the class is a [Git](https://git-scm.com/downloads) distribution. This is also a free software.
+
+## Set up GitHub {-}
+
+One member of the group must create a free [GitHub](https://github.com/join) account. In that account, you will create a new repository (pronounced 'repo') whose name is exactly the same as your R project / book folder (e.g., 'myRbook').  
+The linking between GitHub and Rstudio will be explained later.
+
+## Include images {-}
+
+## Referencing of sections/figures/equations...
+
+## Introduction to Latex 
+
+This is particularly important for writing math expressions.
 
 
 
