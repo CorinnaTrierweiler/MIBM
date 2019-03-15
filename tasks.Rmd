@@ -101,18 +101,18 @@ This is a very incomplete list of tasks that will enter our workflow at some poi
 
 ## Install a Git application {-}
 
-Another application needed in the class is a [Git](https://git-scm.com/downloads) distribution. This is also a free software.
+Another application needed in the class is a [Git (https://git-scm.com/downloads)](https://git-scm.com/downloads) distribution. This is also a free software.
 
 ## Set up GitHub {-}
 
-One member of the group must create a free [GitHub](https://github.com/join) account. In that account, you will create a new repository (pronounced 'repo') whose name is exactly the same as your R project / book folder (e.g., 'myRbook').  
+One member of the group must create a free [GitHub (https://github.com/join)](https://github.com/join) account. In that account, you will create a new repository (pronounced 'repo') whose name is exactly the same as your R project / book folder (e.g., 'myRbook').  
 The linking between GitHub and Rstudio will be explained later.
 
 ## Include images {-}
 
-## Referencing of sections/figures/equations...
+## Referencing of sections/figures/equations... {-}
 
-## Introduction to Latex 
+## Introduction to Latex {-}
 
 This is particularly important for writing math expressions.
 
