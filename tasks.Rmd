@@ -110,9 +110,9 @@ The linking between GitHub and Rstudio will be explained later.
 
 ## Include images {-}
 
-## Referencing of sections/figures/equations...
+## Referencing of sections/figures/equations... {-}
 
-## Introduction to Latex 
+## Introduction to Latex {-}
 
 This is particularly important for writing math expressions.
 
