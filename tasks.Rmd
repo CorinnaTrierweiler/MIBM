@@ -4,6 +4,15 @@ subtitle: "A thread for our class"
 author: "A. Fidalgo"
 date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%m")`'
 output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    highlight: "tango"
+    number_sections: yes
+    toc: yes
   rmdformats::material:
     self_contained: true
     thumbnails: true
@@ -11,15 +20,6 @@ output:
     gallery: true
     number_sections: no
     highlight: haddock
-  pdf_document:
-    highlight: "tango"
-    number_sections: yes
-    toc: yes
-  prettydoc::html_pretty:
-    theme: architect
-    highlight: github
-    number_sections: yes
-    toc: yes
   rmdformats::readthedown:
     self_contained: true
     thumbnails: true
