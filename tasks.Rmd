@@ -1,25 +1,9 @@
 ---
-title: "**Ongoing Tasks**"
+title: "Ongoing Tasks"
 subtitle: "A thread for our class"
 author: "A. Fidalgo"
 date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%m")`'
 output:
-  prettydoc::html_pretty:
-    theme: architect
-    highlight: github
-    number_sections: yes
-    toc: yes
-  pdf_document:
-    highlight: "tango"
-    number_sections: yes
-    toc: yes
-  rmdformats::material:
-    self_contained: true
-    thumbnails: true
-    lightbox: true
-    gallery: true
-    number_sections: no
-    highlight: haddock
   rmdformats::readthedown:
     self_contained: true
     thumbnails: true
@@ -27,6 +11,15 @@ output:
     gallery: true
     number_sections: yes
     highlight: tango
+  pdf_document:
+    highlight: "tango"
+    number_sections: yes
+    toc: yes
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+    number_sections: yes
+    toc: yes
   html_document:
     theme: lumen
     toc: no
@@ -49,7 +42,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# About this document {-}
+
 
 This document is thread of the tasks that structure our class. Of course, not all of them will be documented here. It would be impossible to keep such a level of detail. But those below are certainly compulsory benchmarks.  
 Notice that the file will be updated in reverse chronological order (last section entries appear first; normal order _within_ the section). That is meant to help follow the thread. The table of contents, specially on HTML-like formats, will be very useful to navigate the tasks.  
