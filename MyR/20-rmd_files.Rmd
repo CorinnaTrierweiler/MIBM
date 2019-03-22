@@ -1,0 +1,109 @@
+# (PART) Source file and output files {-}
+
+# Rmd files {#rmd}
+
+This chapter gathers general comments about `.Rmd` files.
+
+## Options for all chuncks
+
+It is convenient to set options for all the R chuncks of the document. This saves time when writing these chuncks.   
+A natural place to set these options is in a first R chunck.
+
+
+```{r, eval=FALSE}
+knitr::opts_chunk$set(OPTION1 = TRUE/FALSE,
+                      OPTION2 = TRUE/FALSE,
+                      ...)
+```
+
+
+Importantly, these options are overriden by the particular chunck options.
+
+````markdown
+`r ''````{r, OPTION2=FALSE}
+````
+
+
+
+
+Options actually take R code. So, the following are examples that could be used to define the option.
+
+
+````markdown
+`r ''````{r, eval=4>3, echo=format(Sys.Date(), '%Y-%B-%d') > '2019-March-10'}
+# eval is always TRUE
+# echo = TRUE if current date is after March 10, 2019
+```
+````
+
+The list of options can be found here [https://yihui.name/knitr/options/](https://yihui.name/knitr/options/). Below are some comments on some of these options (the least trivial for the author).
+
+- `collapse` determines whether the source code and the ouput should be merged into a single block.
+Here is the same chunck with different values of the option:
+
+`collapse=TRUE`
+
+```{r, collapse=TRUE}
+2+ 2
+3* 5
+```
+
+`collapse=FALSE`
+    
+```{r, collapse=FALSE}
+2+ 2
+3* 5
+```
+
+- `comment` gives the string to be printed before the output.
+
+`comment='##'`
+
+```{r, comment='##'}
+2+ 2
+```
+
+`comment='R>'`
+    
+```{r, comment='R>'}
+2+ 2
+```
+
+Worth noting: a `#` as a first character of the comment string (with `collpase=TRUE`) turns the output font into a comment-like text.
+
+- `child` allows a document to call and use another file as input in the document.
+
+````markdown
+`r ''````{r, child='PATH/TO/OTHER/file.Rmd'}
+````
+
+The path can be either absolute or relative.  
+For relative paths, the following applies:  
+
+  - `~/` starts a path a the root,
+  - `../` indicates the parent directory,
+  - `../../` for parent of the parent directory,
+  - to move forward, start with the name of the included folder in the current directory.
+
+
+
+## Latex code
+
+The overwhelming reason to introduce Latex code in a `.Rmd` file is for typesetting mathematical expressions.  
+There are two main ways to type math in Latex:   
+
+  - in the text, surrounded by special delimiters, `\( math \)` (alternatively, one can use the deprecated `$ math $`),
+  - in an equation, surrounded by special delimiters, `\[ math equation \]`, or in a dedicated environment such as `\begin{equation} math equation \end{equation}` (also deprecated, `$$ math equation $$`).
+
+[
+Complete here with:  
+
+  . examples of inline code and an equation,  
+  . a reference for Latex,  
+  . maybe the drawing interpreter.
+]
+
+
+
+
+

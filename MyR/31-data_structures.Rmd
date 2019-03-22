@@ -1,0 +1,109 @@
+# Data stuctures {#datastructures}
+
+This chapter lists the most common objects to store data.
+
+
+## Atomic vectors
+The basic data structure in R is the vector. Vectors have three characteristics:
+
+  - a type, `typeof()`,
+  - a length, `length()`,
+  - some attributes, `attributes()`.
+
+### Types of data 
+
+There are four common types of atomic vectors:
+
+  - logical,
+  - integer,
+  - double (often called numeric),
+  - character.
+
+Note that if vector elements not all of the same type, R makes coercion.  In that case, the order becomes:
+"logical < numeric < character".
+
+Here are a few illustrations.
+
+```{r}
+log_vector <- c(TRUE, FALSE, FALSE)
+
+int_vector <- c(12, 10, 3, "tre")
+typeof(int_vector)
+int_vector <- c(12L, 10L, 3L)
+typeof(int_vector)
+
+num_vector <- c(12, 10, 3)
+typeof(num_vector)
+chr_vector <- c("a", "b", "c")
+typeof(chr_vector)
+is.numeric(num_vector)
+
+no_vector <- c(2, "a")
+is.numeric(no_vector)
+typeof(no_vector)
+```
+
+
+
+```{r vectors}
+vector_A <- c(1:5)
+vector_A
+length(vector_A)
+```
+
+### Factor vector
+
+This is a special type of vector. It has a limited number of values, called levels. These levels can be unordered (e.g., gender is either "Female" or "Male") or ordered (e.g. school level is "Primary", "Secondary", "Tertiary")
+```{r factor}
+gender <-factor(c("Male", "Male", "Female", "Male", "Female", "Female", "Male"))
+gender
+levels(gender)
+summary(gender)
+school<-factor(c("Primary", "Secondary", "Tertiary"), ordered=TRUE)
+school
+
+school2<-factor(c("Primary", "Secondary","Secondary", "Tertiary"), labels=c( "Secondary", "Tertiary","Primary"), ordered=TRUE)
+school2
+
+```
+
+## Matrices and arrays
+My experience is that R is not often used for matrices calculations: it is too slow for that, that are better programs for that out there (e.g. Matlab).
+
+```{r}
+M <- matrix(c(4, 1, 0, 3, 6, 8), nrow=3, ncol=2) 
+M
+```
+
+If we think of a matrix as a 2 dimensions vector, then arrays are $n$ dimensions vectors. Is it important? Probably in some cases, not so much for us.
+
+```{r array example}
+mya<-array(data=1:18, dim=c(2,3,3))
+mya
+```
+
+## Lists
+These are the one-size fit all structure... A list is an object composed of any other object, even... another list! Very useful data structure!
+
+```{r list example}
+school<-factor(c("Primary", "Secondary", "Tertiary"), ordered=TRUE)
+mylist <- list(numbers=c(1:60), somenames=c("Jim","Jules"), results= c(T,F,F,T), school=school)
+mylist
+names(mylist) <- c("N", "O","R","S")
+```
+
+## Data frames
+The second most important data structure in R. You can think of it as a better version of a data set in Excel. It stacks together observations over many variables, each of these variables being a vector.
+
+```{r dataframe}
+data(mtcars)
+class(mtcars)
+mtcars
+head(mtcars)
+str(mtcars)
+names(mtcars) # names of the variables in the data frame
+
+length(mtcars)
+
+str(mtcars)
+```

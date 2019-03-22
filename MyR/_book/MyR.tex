@@ -1,0 +1,1684 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Learning Data Science in R},
+            pdfauthor={Antonio Fidalgo},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Learning Data Science in R}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Antonio Fidalgo}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{Last update: March 22, 2019}
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+%%% BEGIN book headers 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{\thesection~ ~#1~}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter~ ~#1~}{}}
+
+% Fancyhdr setup
+\fancypagestyle{main}{
+\fancyhf{} % clear all header fields
+\fancyhead[LE]{\footnotesize\scshape\thepage}
+\fancyhead[RE]{\footnotesize\scshape\leftmark}
+\fancyhead[LO]{\footnotesize\scshape\rightmark}
+\fancyhead[RO]{\footnotesize\scshape\thepage}
+%\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0 pt}
+\renewcommand{\footrulewidth}{0 pt}
+}
+
+\pagestyle{main}
+
+%%% END book headers
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{foreword}{%
+\chapter*{Foreword}\label{foreword}}
+\addcontentsline{toc}{chapter}{Foreword}
+
+\begin{quote}
+``Data science is like teenage sex: everyone talks about it, nobody
+really knows how to do it, everyone thinks everyone else is doing it, so
+everyone claims they are doing it\ldots{}''
+
+--- paraphrase of Dan Ariely's quote on big data
+\end{quote}
+
+There is already a large number of excellent and free references for
+learning data science in R. The list would be too vast, but two names
+stand out: \href{http://hadley.nz/}{Hadley Wickham} and
+\href{https://yihui.name/en/about/}{Yihui Xie}.\\
+Work of the first includes the books \citet{wickham2016} and
+\citet{wickham2014} (freely available, including source code, on
+\href{https://github.com/hadley}{github.com/hadley}) as well as some of
+the most popular packages in R such as \texttt{ggplot2}
+\citep{R-ggplot2} and \texttt{tidyverse}\citep{R-tidyverse}.\\
+Work of the second is used precisely in the current file thanks to the
+\texttt{rmarkdown} package \citep{R-rmarkdown}, \texttt{knitr}
+\citep{R-knitr} and \texttt{bookdown} \citep{R-bookdown}. His source
+code is also on \href{https://github.com/yihui/}{github.com/yihui/}.
+
+So, the question arises of why one should even bother to write on the
+topic. The present ``book'' is justified on the following grounds.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  There is no better way of learning data science and R than
+  \textbf{doing oneself} the pages of code.\\
+\item
+  The material gathered here is a \textbf{personal selection} made on
+  what I judge most relevant for my work, the most important techniques
+  in general or, sometimes, the least obvious for the regular
+  practitioner.\\
+\item
+  These notes serve as a \textbf{record} of what I did in the domain so
+  that I can easily access it in the future.
+\end{enumerate}
+
+\hypertarget{part-getting-started}{%
+\part{Getting started}\label{part-getting-started}}
+
+\hypertarget{getset}{%
+\chapter{Getting set}\label{getset}}
+
+\hypertarget{install-applications}{%
+\section{Install applications}\label{install-applications}}
+
+Download the following free applications, available on all platforms:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://cran.uni-muenster.de/}{R
+  (https://cran.uni-muenster.de/)}
+\item
+  \href{https://www.rstudio.com/products/rstudio/download/\#download}{RStudio,
+  free Desktop version
+  (https://www.rstudio.com/products/rstudio/download/\#download)}
+\item
+  \href{https://www.latex-project.org/get/}{A Latex distribution} (e.g.,
+  MacTex for Mac or MiKTeX for Windows machines)
+\end{enumerate}
+
+The first two are easily and quickly installed. The last is a very large
+program (a few Gb) and needs time to install.
+
+Another application needed is a \href{https://git-scm.com/downloads}{Git
+(https://git-scm.com/downloads)} distribution. This is also a free
+software.\\
+Once you have installed Git for version control, activate it in RStudio:
+\emph{Tools\textgreater{} Global Options\textgreater{} Git/SVN} and
+click on \emph{Enable version control interface for RStudio projects}.\\
+Also generate a SHH RSA key. We will use it to identify at the GitHub
+repo.
+
+\hypertarget{sign-for-github}{%
+\section{Sign for GitHub}\label{sign-for-github}}
+
+Create an account at GitHub at
+\href{https://github.com/join}{https://github.com}.
+
+\hypertarget{create-your-project}{%
+\section{Create your project}\label{create-your-project}}
+
+\emph{File\textgreater{} New project\textgreater{} Existing Directory}
+and chose that book folder.\\
+Now, every time you create content for your book, you must start a
+Rstudio session \emph{File\textgreater{} Open Project\ldots{}}\\
+All the files of the project are the files of the folder, and vice
+versa.
+
+\hypertarget{create-github-repo-and-link-your-machine-to-it}{%
+\section{Create GitHub repo and link your machine to
+it}\label{create-github-repo-and-link-your-machine-to-it}}
+
+Create a new repository (pronounced `repo') whose name is
+\textbf{exactly} the same as your R project / book folder (e.g.,
+`myRbook').\\
+On the top left menu in GitHub, go to \emph{Settings\textgreater{} SHH
+and GPG keys} and click on `New SHH key'. Paste the SHH key generated by
+RStudio.
+
+In RStudio go to \emph{Tools\textgreater{} Project
+Options\ldots\textgreater{} Git/SVN}. Under \emph{Version control
+system}, select `Git'.\\
+Still in RStudio, \emph{Tools\textgreater{} Terminal\textgreater{} New
+Terminal}. This open a Terminal where you can paste the message shown at
+the creation of the repo (changing the names, of course):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{git remote add origin https}\OperatorTok{:}\ErrorTok{//}\NormalTok{github.com}\OperatorTok{/}\NormalTok{YOURNAME}\OperatorTok{/}\NormalTok{YOURREPO.git}
+\NormalTok{git push }\OperatorTok{-}\NormalTok{u origin master}
+\end{Highlighting}
+\end{Shaded}
+
+Your local \texttt{master} should now be connected to the
+\texttt{master} on GitHub.\\
+If necessary, restart RStudio. At the restart, a Git thumbnail should
+appear in a pane. You are ready to commit and push your files.
+
+\hypertarget{part-source-file-and-output-files}{%
+\part{Source file and output
+files}\label{part-source-file-and-output-files}}
+
+\hypertarget{rmd}{%
+\chapter{Rmd files}\label{rmd}}
+
+This chapter gathers general comments about \texttt{.Rmd} files.
+
+\hypertarget{options-for-all-chuncks}{%
+\section{Options for all chuncks}\label{options-for-all-chuncks}}
+
+It is convenient to set options for all the R chuncks of the document.
+This saves time when writing these chuncks.\\
+A natural place to set these options is in a first R chunck.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\NormalTok{opts_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}\DataTypeTok{OPTION1 =} \OtherTok{TRUE}\OperatorTok{/}\OtherTok{FALSE}\NormalTok{,}
+                      \DataTypeTok{OPTION2 =} \OtherTok{TRUE}\OperatorTok{/}\OtherTok{FALSE}\NormalTok{,}
+\NormalTok{                      ...)}
+\end{Highlighting}
+\end{Shaded}
+
+Importantly, these options are overriden by the particular chunck
+options.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BaseNTok{```\{r, OPTION2=FALSE\}}
+\end{Highlighting}
+\end{Shaded}
+
+Options actually take R code. So, the following are examples that could
+be used to define the option.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BaseNTok{```\{r, eval=4>3, echo=format(Sys.Date(), '%Y-%B-%d') > '2019-March-10'\}}
+\BaseNTok{# eval is always TRUE}
+\BaseNTok{# echo = TRUE if current date is after March 10, 2019}
+\BaseNTok{```}
+\end{Highlighting}
+\end{Shaded}
+
+The list of options can be found here
+\url{https://yihui.name/knitr/options/}. Below are some comments on some
+of these options (the least trivial for the author).
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{collapse} determines whether the source code and the ouput
+  should be merged into a single block. Here is the same chunck with
+  different values of the option:
+\end{itemize}
+
+\texttt{collapse=TRUE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{+}\StringTok{ }\DecValTok{2}
+\CommentTok{#> [1] 4}
+\DecValTok{3}\OperatorTok{*}\StringTok{ }\DecValTok{5}
+\CommentTok{#> [1] 15}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{collapse=FALSE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{+}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{*}\StringTok{ }\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> [1] 15
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{comment} gives the string to be printed before the output.
+\end{itemize}
+
+\texttt{comment=\textquotesingle{}\#\#\textquotesingle{}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{+}\StringTok{ }\DecValTok{2}
+\CommentTok{## [1] 4}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{comment=\textquotesingle{}R\textgreater{}\textquotesingle{}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{+}\StringTok{ }\DecValTok{2}
+\NormalTok{R}\OperatorTok{>}\StringTok{ }\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+Worth noting: a \texttt{\#} as a first character of the comment string
+(with \texttt{collpase=TRUE}) turns the output font into a comment-like
+text.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{child} allows a document to call and use another file as input
+  in the document.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BaseNTok{```\{r, child='PATH/TO/OTHER/file.Rmd'\}}
+\end{Highlighting}
+\end{Shaded}
+
+The path can be either absolute or relative.\\
+For relative paths, the following applies:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\textasciitilde{}/} starts a path a the root,
+\item
+  \texttt{../} indicates the parent directory,
+\item
+  \texttt{../../} for parent of the parent directory,
+\item
+  to move forward, start with the name of the included folder in the
+  current directory.
+\end{itemize}
+
+\hypertarget{latex-code}{%
+\section{Latex code}\label{latex-code}}
+
+The overwhelming reason to introduce Latex code in a \texttt{.Rmd} file
+is for typesetting mathematical expressions.\\
+There are two main ways to type math in Latex:
+
+\begin{itemize}
+\tightlist
+\item
+  in the text, surrounded by special delimiters,
+  \texttt{\textbackslash{}(\ math\ \textbackslash{})} (alternatively,
+  one can use the deprecated \texttt{\$\ math\ \$}),
+\item
+  in an equation, surrounded by special delimiters,
+  \texttt{\textbackslash{}{[}\ math\ equation\ \textbackslash{}{]}}, or
+  in a dedicated environment such as
+  \texttt{\textbackslash{}begin\{equation\}\ math\ equation\ \textbackslash{}end\{equation\}}
+  (also deprecated, \texttt{\$\$\ math\ equation\ \$\$}).
+\end{itemize}
+
+{[} Complete here with:
+
+. examples of inline code and an equation,\\
+. a reference for Latex,\\
+. maybe the drawing interpreter. {]}
+
+\hypertarget{custom-ouptut}{%
+\chapter{Customize output}\label{custom-ouptut}}
+
+This chapter is about choosing and/or modifying the way the output file
+looks like.
+
+\hypertarget{multiple-built-in-output-types}{%
+\section{Multiple built-in output
+types}\label{multiple-built-in-output-types}}
+
+{[}complete this section{]} From pdf to slides, through webpages and
+notebooks.
+
+\hypertarget{new-types-provided-by-packages}{%
+\section{New types provided by
+packages}\label{new-types-provided-by-packages}}
+
+{[}complete this section{]} These are more variations of the above.
+
+\hypertarget{css-custom-html}{%
+\section{CSS: custom html}\label{css-custom-html}}
+
+A file to change how html outputs look like.
+
+\hypertarget{latex-preamble}{%
+\section{Latex preamble}\label{latex-preamble}}
+
+This file is added to the preamble of the Latex file to modify how the
+pdf output is compiled.
+
+\hypertarget{part-r-basics}{%
+\part{R Basics}\label{part-r-basics}}
+
+\hypertarget{r-as-a-calculator}{%
+\chapter{R as a calculator}\label{r-as-a-calculator}}
+
+R can be used as a simple calculator. For instance, 45+17=62 .\\
+Here are a few more examples of the commands.
+
+\hypertarget{usual-operators}{%
+\section{Usual operators}\label{usual-operators}}
+
+\hypertarget{simple-operations}{%
+\subsection{Simple operations}\label{simple-operations}}
+
+The usual symbols \texttt{+,\ -,\ *,\ /} apply .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{6}
+\CommentTok{#> [1] 8}
+\DecValTok{56}\OperatorTok{/}\StringTok{ }\DecValTok{6}
+\CommentTok{#> [1] 9.333333}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{parentheses}{%
+\subsection{Parentheses}\label{parentheses}}
+
+The parentheses work as expected. But they are also a common source of
+error when they are not matched.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{4}\OperatorTok{+}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\NormalTok{((}\DecValTok{7-3}\NormalTok{)}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\FloatTok{+.05}\NormalTok{))}
+\CommentTok{#> [1] 26.66667}
+\end{Highlighting}
+\end{Shaded}
+
+The next expression will generate an error and prevent the compilation
+of the whole book.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{4}\OperatorTok{+}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\NormalTok{((}\DecValTok{7-3}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\FloatTok{+.05}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exponents}{%
+\subsection{Exponents}\label{exponents}}
+
+There are two ways of expressing the power of a number: \texttt{\^{}}
+and \texttt{**}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{^}\DecValTok{4}
+\CommentTok{#> [1] 81}
+\DecValTok{3}\OperatorTok{**}\DecValTok{4}
+\CommentTok{#> [1] 81}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{unusual-operators}{%
+\section{Unusual operators}\label{unusual-operators}}
+
+\hypertarget{special-operations}{%
+\subsection{Special operations}\label{special-operations}}
+
+The symbols \texttt{\%/\%} and \texttt{\%\%} return the entire part of
+the result of the division and the rest of the division, respectively.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{56}\OperatorTok{/}\DecValTok{6}
+\CommentTok{#> [1] 9.333333}
+\DecValTok{56}\OperatorTok{%/%}\DecValTok{6}
+\CommentTok{#> [1] 9}
+\DecValTok{56}\OperatorTok{%%}\DecValTok{6}
+\CommentTok{#> [1] 2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{usual-functions}{%
+\section{Usual functions}\label{usual-functions}}
+
+The common functions found in any calculator also have an equivalent on
+R. The following examples need no further comment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{log}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\CommentTok{#> [1] 4.60517}
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\CommentTok{#> [1] 10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{part-r-basics-1}{%
+\part{R Basics}\label{part-r-basics-1}}
+
+\hypertarget{rcalc}{%
+\chapter{R as a calculator}\label{rcalc}}
+
+R can be used as a simple calculator. For instance, 45+17=62 .\\
+Here are a few more examples of the commands.
+
+\hypertarget{usual-operators-1}{%
+\section{Usual operators}\label{usual-operators-1}}
+
+\hypertarget{simple-operations-1}{%
+\subsection{Simple operations}\label{simple-operations-1}}
+
+The usual symbols \texttt{+,\ -,\ *,\ /} apply .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{6}
+\CommentTok{#> [1] 8}
+\DecValTok{56}\OperatorTok{/}\StringTok{ }\DecValTok{6}
+\CommentTok{#> [1] 9.333333}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{parentheses-1}{%
+\subsection{Parentheses}\label{parentheses-1}}
+
+The parentheses work as expected. But they are also a common source of
+error when they are not matched.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{4}\OperatorTok{+}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\NormalTok{((}\DecValTok{7-3}\NormalTok{)}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\FloatTok{+.05}\NormalTok{))}
+\CommentTok{#> [1] 26.66667}
+\end{Highlighting}
+\end{Shaded}
+
+The next expression will generate an error and prevent the compilation
+of the whole book.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{4}\OperatorTok{+}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\NormalTok{((}\DecValTok{7-3}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\FloatTok{+.05}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exponents-1}{%
+\subsection{Exponents}\label{exponents-1}}
+
+There are two ways of expressing the power of a number: \texttt{\^{}}
+and \texttt{**}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{^}\DecValTok{4}
+\CommentTok{#> [1] 81}
+\DecValTok{3}\OperatorTok{**}\DecValTok{4}
+\CommentTok{#> [1] 81}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{unusual-operators-1}{%
+\section{Unusual operators}\label{unusual-operators-1}}
+
+\hypertarget{special-operations-1}{%
+\subsection{Special operations}\label{special-operations-1}}
+
+The symbols \texttt{\%/\%} and \texttt{\%\%} return the entire part of
+the result of the division and the rest of the division, respectively.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{56}\OperatorTok{/}\DecValTok{6}
+\CommentTok{#> [1] 9.333333}
+\DecValTok{56}\OperatorTok{%/%}\DecValTok{6}
+\CommentTok{#> [1] 9}
+\DecValTok{56}\OperatorTok{%%}\DecValTok{6}
+\CommentTok{#> [1] 2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{usual-functions-1}{%
+\section{Usual functions}\label{usual-functions-1}}
+
+The common functions found in any calculator also have an equivalent on
+R. The following examples need no further comment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{log}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\CommentTok{#> [1] 4.60517}
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\CommentTok{#> [1] 10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{datastructures}{%
+\chapter{Data stuctures}\label{datastructures}}
+
+This chapter lists the most common objects to store data.
+
+\hypertarget{atomic-vectors}{%
+\section{Atomic vectors}\label{atomic-vectors}}
+
+The basic data structure in R is the vector. Vectors have three
+characteristics:
+
+\begin{itemize}
+\tightlist
+\item
+  a type, \texttt{typeof()},
+\item
+  a length, \texttt{length()},
+\item
+  some attributes, \texttt{attributes()}.
+\end{itemize}
+
+\hypertarget{types-of-data}{%
+\subsection{Types of data}\label{types-of-data}}
+
+There are four common types of atomic vectors:
+
+\begin{itemize}
+\tightlist
+\item
+  logical,
+\item
+  integer,
+\item
+  double (often called numeric),
+\item
+  character.
+\end{itemize}
+
+Note that if vector elements not all of the same type, R makes coercion.
+In that case, the order becomes: ``logical \textless{} numeric
+\textless{} character''.
+
+Here are a few illustrations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{log_vector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
+
+\NormalTok{int_vector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{, }\StringTok{"tre"}\NormalTok{)}
+\KeywordTok{typeof}\NormalTok{(int_vector)}
+\CommentTok{#> [1] "character"}
+\NormalTok{int_vector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(12L, 10L, 3L)}
+\KeywordTok{typeof}\NormalTok{(int_vector)}
+\CommentTok{#> [1] "integer"}
+
+\NormalTok{num_vector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\KeywordTok{typeof}\NormalTok{(num_vector)}
+\CommentTok{#> [1] "double"}
+\NormalTok{chr_vector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{)}
+\KeywordTok{typeof}\NormalTok{(chr_vector)}
+\CommentTok{#> [1] "character"}
+\KeywordTok{is.numeric}\NormalTok{(num_vector)}
+\CommentTok{#> [1] TRUE}
+
+\NormalTok{no_vector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\StringTok{"a"}\NormalTok{)}
+\KeywordTok{is.numeric}\NormalTok{(no_vector)}
+\CommentTok{#> [1] FALSE}
+\KeywordTok{typeof}\NormalTok{(no_vector)}
+\CommentTok{#> [1] "character"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vector_A <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{vector_A}
+\CommentTok{#> [1] 1 2 3 4 5}
+\KeywordTok{length}\NormalTok{(vector_A)}
+\CommentTok{#> [1] 5}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{factor-vector}{%
+\subsection{Factor vector}\label{factor-vector}}
+
+This is a special type of vector. It has a limited number of values,
+called levels. These levels can be unordered (e.g., gender is either
+``Female'' or ``Male'') or ordered (e.g.~school level is ``Primary'',
+``Secondary'', ``Tertiary'')
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gender <-}\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{, }\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{, }\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{, }\StringTok{"Female"}\NormalTok{, }\StringTok{"Male"}\NormalTok{))}
+\NormalTok{gender}
+\CommentTok{#> [1] Male   Male   Female Male   Female Female Male  }
+\CommentTok{#> Levels: Female Male}
+\KeywordTok{levels}\NormalTok{(gender)}
+\CommentTok{#> [1] "Female" "Male"}
+\KeywordTok{summary}\NormalTok{(gender)}
+\CommentTok{#> Female   Male }
+\CommentTok{#>      3      4}
+\NormalTok{school<-}\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Primary"}\NormalTok{, }\StringTok{"Secondary"}\NormalTok{, }\StringTok{"Tertiary"}\NormalTok{), }\DataTypeTok{ordered=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{school}
+\CommentTok{#> [1] Primary   Secondary Tertiary }
+\CommentTok{#> Levels: Primary < Secondary < Tertiary}
+
+\NormalTok{school2<-}\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Primary"}\NormalTok{, }\StringTok{"Secondary"}\NormalTok{,}\StringTok{"Secondary"}\NormalTok{, }\StringTok{"Tertiary"}\NormalTok{), }\DataTypeTok{labels=}\KeywordTok{c}\NormalTok{( }\StringTok{"Secondary"}\NormalTok{, }\StringTok{"Tertiary"}\NormalTok{,}\StringTok{"Primary"}\NormalTok{), }\DataTypeTok{ordered=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{school2}
+\CommentTok{#> [1] Secondary Tertiary  Tertiary  Primary  }
+\CommentTok{#> Levels: Secondary < Tertiary < Primary}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrices-and-arrays}{%
+\section{Matrices and arrays}\label{matrices-and-arrays}}
+
+My experience is that R is not often used for matrices calculations: it
+is too slow for that, that are better programs for that out there
+(e.g.~Matlab).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{8}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{3}\NormalTok{, }\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{) }
+\NormalTok{M}
+\CommentTok{#>      [,1] [,2]}
+\CommentTok{#> [1,]    4    3}
+\CommentTok{#> [2,]    1    6}
+\CommentTok{#> [3,]    0    8}
+\end{Highlighting}
+\end{Shaded}
+
+If we think of a matrix as a 2 dimensions vector, then arrays are \(n\)
+dimensions vectors. Is it important? Probably in some cases, not so much
+for us.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mya<-}\KeywordTok{array}\NormalTok{(}\DataTypeTok{data=}\DecValTok{1}\OperatorTok{:}\DecValTok{18}\NormalTok{, }\DataTypeTok{dim=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\NormalTok{mya}
+\CommentTok{#> , , 1}
+\CommentTok{#> }
+\CommentTok{#>      [,1] [,2] [,3]}
+\CommentTok{#> [1,]    1    3    5}
+\CommentTok{#> [2,]    2    4    6}
+\CommentTok{#> }
+\CommentTok{#> , , 2}
+\CommentTok{#> }
+\CommentTok{#>      [,1] [,2] [,3]}
+\CommentTok{#> [1,]    7    9   11}
+\CommentTok{#> [2,]    8   10   12}
+\CommentTok{#> }
+\CommentTok{#> , , 3}
+\CommentTok{#> }
+\CommentTok{#>      [,1] [,2] [,3]}
+\CommentTok{#> [1,]   13   15   17}
+\CommentTok{#> [2,]   14   16   18}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{lists}{%
+\section{Lists}\label{lists}}
+
+These are the one-size fit all structure\ldots{} A list is an object
+composed of any other object, even\ldots{} another list! Very useful
+data structure!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{school<-}\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Primary"}\NormalTok{, }\StringTok{"Secondary"}\NormalTok{, }\StringTok{"Tertiary"}\NormalTok{), }\DataTypeTok{ordered=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{mylist <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{numbers=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{60}\NormalTok{), }\DataTypeTok{somenames=}\KeywordTok{c}\NormalTok{(}\StringTok{"Jim"}\NormalTok{,}\StringTok{"Jules"}\NormalTok{), }\DataTypeTok{results=} \KeywordTok{c}\NormalTok{(T,F,F,T), }\DataTypeTok{school=}\NormalTok{school)}
+\NormalTok{mylist}
+\CommentTok{#> $numbers}
+\CommentTok{#>  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23}
+\CommentTok{#> [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46}
+\CommentTok{#> [47] 47 48 49 50 51 52 53 54 55 56 57 58 59 60}
+\CommentTok{#> }
+\CommentTok{#> $somenames}
+\CommentTok{#> [1] "Jim"   "Jules"}
+\CommentTok{#> }
+\CommentTok{#> $results}
+\CommentTok{#> [1]  TRUE FALSE FALSE  TRUE}
+\CommentTok{#> }
+\CommentTok{#> $school}
+\CommentTok{#> [1] Primary   Secondary Tertiary }
+\CommentTok{#> Levels: Primary < Secondary < Tertiary}
+\KeywordTok{names}\NormalTok{(mylist) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"N"}\NormalTok{, }\StringTok{"O"}\NormalTok{,}\StringTok{"R"}\NormalTok{,}\StringTok{"S"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-frames}{%
+\section{Data frames}\label{data-frames}}
+
+The second most important data structure in R. You can think of it as a
+better version of a data set in Excel. It stacks together observations
+over many variables, each of these variables being a vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(mtcars)}
+\KeywordTok{class}\NormalTok{(mtcars)}
+\CommentTok{#> [1] "data.frame"}
+\NormalTok{mtcars}
+\CommentTok{#>                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb}
+\CommentTok{#> Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4}
+\CommentTok{#> Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4}
+\CommentTok{#> Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1}
+\CommentTok{#> Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1}
+\CommentTok{#> Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2}
+\CommentTok{#> Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1}
+\CommentTok{#> Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4}
+\CommentTok{#> Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2}
+\CommentTok{#> Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2}
+\CommentTok{#> Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4}
+\CommentTok{#> Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4}
+\CommentTok{#> Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3}
+\CommentTok{#> Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3}
+\CommentTok{#> Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3}
+\CommentTok{#> Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4}
+\CommentTok{#> Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4}
+\CommentTok{#> Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4}
+\CommentTok{#> Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1}
+\CommentTok{#> Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2}
+\CommentTok{#> Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1}
+\CommentTok{#> Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1}
+\CommentTok{#> Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2}
+\CommentTok{#> AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2}
+\CommentTok{#> Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4}
+\CommentTok{#> Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2}
+\CommentTok{#> Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1}
+\CommentTok{#> Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2}
+\CommentTok{#> Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2}
+\CommentTok{#> Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4}
+\CommentTok{#> Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6}
+\CommentTok{#> Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8}
+\CommentTok{#> Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2}
+\KeywordTok{head}\NormalTok{(mtcars)}
+\CommentTok{#>                    mpg cyl disp  hp drat    wt  qsec vs am gear carb}
+\CommentTok{#> Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4}
+\CommentTok{#> Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4}
+\CommentTok{#> Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1}
+\CommentTok{#> Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1}
+\CommentTok{#> Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2}
+\CommentTok{#> Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1}
+\KeywordTok{str}\NormalTok{(mtcars)}
+\CommentTok{#> 'data.frame':    32 obs. of  11 variables:}
+\CommentTok{#>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...}
+\CommentTok{#>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...}
+\CommentTok{#>  $ disp: num  160 160 108 258 360 ...}
+\CommentTok{#>  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...}
+\CommentTok{#>  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...}
+\CommentTok{#>  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...}
+\CommentTok{#>  $ qsec: num  16.5 17 18.6 19.4 17 ...}
+\CommentTok{#>  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...}
+\CommentTok{#>  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...}
+\CommentTok{#>  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...}
+\CommentTok{#>  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...}
+\KeywordTok{names}\NormalTok{(mtcars) }\CommentTok{# names of the variables in the data frame}
+\CommentTok{#>  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"}
+\CommentTok{#> [11] "carb"}
+
+\KeywordTok{length}\NormalTok{(mtcars)}
+\CommentTok{#> [1] 11}
+
+\KeywordTok{str}\NormalTok{(mtcars)}
+\CommentTok{#> 'data.frame':    32 obs. of  11 variables:}
+\CommentTok{#>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...}
+\CommentTok{#>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...}
+\CommentTok{#>  $ disp: num  160 160 108 258 360 ...}
+\CommentTok{#>  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...}
+\CommentTok{#>  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...}
+\CommentTok{#>  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...}
+\CommentTok{#>  $ qsec: num  16.5 17 18.6 19.4 17 ...}
+\CommentTok{#>  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...}
+\CommentTok{#>  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...}
+\CommentTok{#>  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...}
+\CommentTok{#>  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{simple-functions-on-vectors}{%
+\chapter{Simple functions on
+vectors}\label{simple-functions-on-vectors}}
+
+In this section, we illustrate calculations with a single vector
+(element by element) and the recycling rule.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{visits1 <-}\StringTok{  }\KeywordTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{65}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{visits2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{23}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{78}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{200}\NormalTok{)}
+
+\NormalTok{total <-}\StringTok{ }\NormalTok{visits1 }\OperatorTok{+}\StringTok{ }\NormalTok{visits2}
+\NormalTok{total}
+\CommentTok{#> [1]  35   6  50 153  77  11 203}
+
+\NormalTok{total.p2 <-}\StringTok{ }\NormalTok{total}\OperatorTok{^}\DecValTok{2}
+\NormalTok{total.p2}
+\CommentTok{#> [1]  1225    36  2500 23409  5929   121 41209}
+
+\NormalTok{apples <-}\StringTok{ }\DecValTok{15}
+\NormalTok{bananas <-}\StringTok{ }\DecValTok{60}
+\NormalTok{my.fruits <-}\StringTok{ }\NormalTok{apples }\OperatorTok{+}\StringTok{ }\NormalTok{bananas}
+\NormalTok{my.fruits}
+\CommentTok{#> [1] 75}
+
+\NormalTok{l3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{50}\NormalTok{)}
+\NormalTok{l2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{tt <-}\StringTok{ }\NormalTok{l3 }\OperatorTok{+}\StringTok{ }\DecValTok{5} 
+\NormalTok{tt}
+\CommentTok{#> [1] 17 39 55}
+
+\NormalTok{ltotal <-}\StringTok{ }\NormalTok{l3}\OperatorTok{+}\NormalTok{l2 }\CommentTok{# recycling!!!}
+\CommentTok{#> Warning in l3 + l2: longer object length is not a multiple of shorter}
+\CommentTok{#> object length}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ages <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{27}\NormalTok{, }\DecValTok{40}\NormalTok{)}
+\NormalTok{ages}
+\CommentTok{#> [1] 28 33 39 56 34 45 27 40}
+\KeywordTok{max}\NormalTok{(ages)}
+\CommentTok{#> [1] 56}
+\KeywordTok{sum}\NormalTok{(ages)}
+\CommentTok{#> [1] 302}
+\KeywordTok{length}\NormalTok{(ages)}
+\CommentTok{#> [1] 8}
+
+\NormalTok{ages <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{28}\NormalTok{, }\DecValTok{33}\NormalTok{,}\DecValTok{39}\NormalTok{,}\DecValTok{56}\NormalTok{,}\DecValTok{34}\NormalTok{,}\DecValTok{45}\NormalTok{, }\DecValTok{27}\NormalTok{,}\DecValTok{40}\NormalTok{, }\OtherTok{NA}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(ages, }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{)}
+\CommentTok{#> [1] 37.75}
+
+\CommentTok{# for help on a command, simply type ? in front of it}
+\NormalTok{?mean}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{subset}{%
+\chapter{Subsetting}\label{subset}}
+
+\hypertarget{generalities-about-subsetting}{%
+\section{Generalities about
+subsetting}\label{generalities-about-subsetting}}
+
+There are three subsetting operators: \texttt{\$}, \texttt{{[}{]}} and
+\texttt{{[}{[}{]}{]}}.\\
+Some functions also allow to create subsets: we'll see that later.\\
+We can combine subsetting and assignment to change some parts of an
+object.\\
+Complement to \texttt{str()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{va <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{13.1}\NormalTok{, }\FloatTok{-15.2}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{2.4}\NormalTok{, }\FloatTok{10.5}\NormalTok{, }\FloatTok{-3.6}\NormalTok{, }\FloatTok{9.7}\NormalTok{) }\CommentTok{# create the vector va}
+\KeywordTok{str}\NormalTok{(va)}
+\CommentTok{#>  num [1:7] 13.1 -15.2 0.3 2.4 10.5 -3.6 9.7}
+\end{Highlighting}
+\end{Shaded}
+
+One can see from this call, that va is a simple vector with r length(va)
+elements. Subsetting means chosing among these.
+
+\hypertarget{section}{%
+\section{\texorpdfstring{\texttt{{[}{]}}}{{[}{]}}}\label{section}}
+
+Applies to vectors, matrices, lists and data frames.\\
+Can be used with:
+
+\begin{verbatim}
+- positive or negative values,
+- many values in a vector,
+- logical, `NA`,
+- character vectors when names.
+\end{verbatim}
+
+\hypertarget{on-a-vector}{%
+\subsection{On a vector}\label{on-a-vector}}
+
+Here are a few examples of that object used on a vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{va <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{13.1}\NormalTok{, }\FloatTok{-15.2}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{2.4}\NormalTok{, }\FloatTok{10.5}\NormalTok{, }\FloatTok{-3.6}\NormalTok{, }\FloatTok{9.7}\NormalTok{)}
+\NormalTok{va[}\DecValTok{1}\NormalTok{] }\CommentTok{# element 1}
+\CommentTok{#> [1] 13.1}
+\NormalTok{va[}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{)] }\CommentTok{# elements 3 to 5}
+\CommentTok{#> [1]  0.3  2.4 10.5}
+\NormalTok{va[}\OperatorTok{-}\DecValTok{1}\NormalTok{] }\CommentTok{# all elements minus the element 1}
+\CommentTok{#> [1] -15.2   0.3   2.4  10.5  -3.6   9.7}
+\NormalTok{va[}\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{)] }
+\CommentTok{#> [1]  13.1 -15.2   0.3  -3.6}
+\NormalTok{va[}\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{)] }\CommentTok{# notice the recycling at play here}
+\CommentTok{#> [1] 13.1  0.3 10.5  9.7}
+\NormalTok{va[}\OtherTok{NA}\NormalTok{] }
+\CommentTok{#> [1] NA NA NA NA NA NA NA}
+\NormalTok{va[] }\CommentTok{# nothing selected gives the full vector}
+\CommentTok{#> [1]  13.1 -15.2   0.3   2.4  10.5  -3.6   9.7}
+\KeywordTok{names}\NormalTok{(va)<-letters[}\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(va)] }\CommentTok{# give names to va}
+\CommentTok{# notice that we subset the vector letters (given by R) and that we don't}
+\CommentTok{# specify the length but give a general value}
+\CommentTok{# now we can subset using names}
+\NormalTok{va}
+\CommentTok{#>     a     b     c     d     e     f     g }
+\CommentTok{#>  13.1 -15.2   0.3   2.4  10.5  -3.6   9.7}
+\NormalTok{va[}\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"e"}\NormalTok{,}\StringTok{"b"}\NormalTok{)]}
+\CommentTok{#>     a     e     b }
+\CommentTok{#>  13.1  10.5 -15.2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{on-a-list}{%
+\subsection{On a list}\label{on-a-list}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mylist<-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{numbers=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{20}\NormalTok{), }
+              \DataTypeTok{ournames=}\KeywordTok{c}\NormalTok{(}\StringTok{"Jim"}\NormalTok{,}\StringTok{"Jules"}\NormalTok{), }
+              \DataTypeTok{results=} \KeywordTok{c}\NormalTok{(T,F,F,T), }
+              \DataTypeTok{school=}\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Primary"}\NormalTok{, }\StringTok{"Secondary"}\NormalTok{, }\StringTok{"Tertiary"}\NormalTok{), }\DataTypeTok{ordered=}\OtherTok{TRUE}\NormalTok{))}
+\KeywordTok{str}\NormalTok{(mylist)}
+\CommentTok{#> List of 4}
+\CommentTok{#>  $ numbers : int [1:20] 1 2 3 4 5 6 7 8 9 10 ...}
+\CommentTok{#>  $ ournames: chr [1:2] "Jim" "Jules"}
+\CommentTok{#>  $ results : logi [1:4] TRUE FALSE FALSE TRUE}
+\CommentTok{#>  $ school  : Ord.factor w/ 3 levels "Primary"<"Secondary"<..: 1 2 3}
+
+\NormalTok{mylist[}\DecValTok{1}\NormalTok{] }\CommentTok{# first element of the list}
+\CommentTok{#> $numbers}
+\CommentTok{#>  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20}
+\KeywordTok{class}\NormalTok{(mylist[}\DecValTok{1}\NormalTok{])}
+\CommentTok{#> [1] "list"}
+\NormalTok{mylist[[}\DecValTok{3}\NormalTok{]][}\DecValTok{3}\NormalTok{]}
+\CommentTok{#> [1] FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that the result of this subsetting is a r class(mylist{[}1{]})!
+
+\hypertarget{on-a-matrix}{%
+\subsection{On a matrix}\label{on-a-matrix}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
+\NormalTok{my.mat <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{floor}\NormalTok{(}\KeywordTok{runif}\NormalTok{(}\DecValTok{30}\NormalTok{)}\OperatorTok{*}\DecValTok{10}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{5}\NormalTok{)}
+\NormalTok{my.mat}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6]}
+\CommentTok{#> [1,]    9    5    4    9    9    5}
+\CommentTok{#> [2,]    9    7    7    9    1    3}
+\CommentTok{#> [3,]    2    1    9    1    9    9}
+\CommentTok{#> [4,]    8    6    2    4    9    4}
+\CommentTok{#> [5,]    6    7    4    5    0    8}
+\KeywordTok{str}\NormalTok{(my.mat)}
+\CommentTok{#>  num [1:5, 1:6] 9 9 2 8 6 5 7 1 6 7 ...}
+\KeywordTok{length}\NormalTok{(my.mat)}
+\CommentTok{#> [1] 30}
+\end{Highlighting}
+\end{Shaded}
+
+The structure shows that there are r length(dim(my.mat)) dimensions. For
+subsetting, we must give r length(dim(my.mat)) dimensions! Same rules as
+for the vectors apply.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.mat[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{] }\CommentTok{# 2nd row, 3rd row}
+\CommentTok{#> [1] 7}
+\NormalTok{my.mat[}\OperatorTok{-}\DecValTok{1}\NormalTok{,]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6]}
+\CommentTok{#> [1,]    9    7    7    9    1    3}
+\CommentTok{#> [2,]    2    1    9    1    9    9}
+\CommentTok{#> [3,]    8    6    2    4    9    4}
+\CommentTok{#> [4,]    6    7    4    5    0    8}
+\KeywordTok{colnames}\NormalTok{(my.mat) <-}\StringTok{ }\NormalTok{letters[}\DecValTok{1}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(my.mat)] }\CommentTok{# give names to the columns}
+\KeywordTok{rownames}\NormalTok{(my.mat) <-}\StringTok{ }\NormalTok{LETTERS[}\DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(my.mat)] }\CommentTok{# give names to the rows}
+\NormalTok{my.mat}
+\CommentTok{#>   a b c d e f}
+\CommentTok{#> A 9 5 4 9 9 5}
+\CommentTok{#> B 9 7 7 9 1 3}
+\CommentTok{#> C 2 1 9 1 9 9}
+\CommentTok{#> D 8 6 2 4 9 4}
+\CommentTok{#> E 6 7 4 5 0 8}
+\NormalTok{my.mat[}\StringTok{"C"}\NormalTok{,}\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"c"}\NormalTok{,}\StringTok{"e"}\NormalTok{)]}
+\CommentTok{#> a c e }
+\CommentTok{#> 2 9 9}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section-1}{%
+\section{\texorpdfstring{\texttt{{[}{[}{]}{]}}}{{[}{[}{]}{]}}}\label{section-1}}
+
+This object is used mainly for lists.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mylist<-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{numbers=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{20}\NormalTok{), }
+              \DataTypeTok{ournames=}\KeywordTok{c}\NormalTok{(}\StringTok{"Jim"}\NormalTok{,}\StringTok{"Jules"}\NormalTok{), }
+              \DataTypeTok{results=} \KeywordTok{c}\NormalTok{(T,F,F,T), }
+              \DataTypeTok{school=}\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Primary"}\NormalTok{, }\StringTok{"Secondary"}\NormalTok{, }\StringTok{"Tertiary"}\NormalTok{), }\DataTypeTok{ordered=}\OtherTok{TRUE}\NormalTok{))}
+\KeywordTok{str}\NormalTok{(mylist)}
+\CommentTok{#> List of 4}
+\CommentTok{#>  $ numbers : int [1:20] 1 2 3 4 5 6 7 8 9 10 ...}
+\CommentTok{#>  $ ournames: chr [1:2] "Jim" "Jules"}
+\CommentTok{#>  $ results : logi [1:4] TRUE FALSE FALSE TRUE}
+\CommentTok{#>  $ school  : Ord.factor w/ 3 levels "Primary"<"Secondary"<..: 1 2 3}
+\NormalTok{mylist[[}\DecValTok{1}\NormalTok{]]}
+\CommentTok{#>  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section-2}{%
+\section{\texorpdfstring{\texttt{\$}}{\$}}\label{section-2}}
+
+This object is usually for data frames, where it gives the variable.\\
+It allows partial matching (e.g., \texttt{mtcars\$gear} is the same as
+\texttt{mtcars\$gea})
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(mtcars)}
+\KeywordTok{names}\NormalTok{(mtcars)}
+\CommentTok{#>  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"}
+\CommentTok{#> [11] "carb"}
+\NormalTok{mtcars}\OperatorTok{$}\NormalTok{mpg}
+\CommentTok{#>  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2}
+\CommentTok{#> [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4}
+\CommentTok{#> [29] 15.8 19.7 15.0 21.4}
+\NormalTok{mtcars[[}\StringTok{"mpg"}\NormalTok{]] }\CommentTok{# just exactly the same, but R users prefer the $}
+\CommentTok{#>  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2}
+\CommentTok{#> [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4}
+\CommentTok{#> [29] 15.8 19.7 15.0 21.4}
+\NormalTok{mtcars[}\StringTok{"mpg"}\NormalTok{] }\CommentTok{# NOT the same at all! [] preserves the class}
+\CommentTok{#>                      mpg}
+\CommentTok{#> Mazda RX4           21.0}
+\CommentTok{#> Mazda RX4 Wag       21.0}
+\CommentTok{#> Datsun 710          22.8}
+\CommentTok{#> Hornet 4 Drive      21.4}
+\CommentTok{#> Hornet Sportabout   18.7}
+\CommentTok{#> Valiant             18.1}
+\CommentTok{#> Duster 360          14.3}
+\CommentTok{#> Merc 240D           24.4}
+\CommentTok{#> Merc 230            22.8}
+\CommentTok{#> Merc 280            19.2}
+\CommentTok{#> Merc 280C           17.8}
+\CommentTok{#> Merc 450SE          16.4}
+\CommentTok{#> Merc 450SL          17.3}
+\CommentTok{#> Merc 450SLC         15.2}
+\CommentTok{#> Cadillac Fleetwood  10.4}
+\CommentTok{#> Lincoln Continental 10.4}
+\CommentTok{#> Chrysler Imperial   14.7}
+\CommentTok{#> Fiat 128            32.4}
+\CommentTok{#> Honda Civic         30.4}
+\CommentTok{#> Toyota Corolla      33.9}
+\CommentTok{#> Toyota Corona       21.5}
+\CommentTok{#> Dodge Challenger    15.5}
+\CommentTok{#> AMC Javelin         15.2}
+\CommentTok{#> Camaro Z28          13.3}
+\CommentTok{#> Pontiac Firebird    19.2}
+\CommentTok{#> Fiat X1-9           27.3}
+\CommentTok{#> Porsche 914-2       26.0}
+\CommentTok{#> Lotus Europa        30.4}
+\CommentTok{#> Ford Pantera L      15.8}
+\CommentTok{#> Ferrari Dino        19.7}
+\CommentTok{#> Maserati Bora       15.0}
+\CommentTok{#> Volvo 142E          21.4}
+\KeywordTok{class}\NormalTok{(mtcars[}\StringTok{"mpg"}\NormalTok{])}
+\CommentTok{#> [1] "data.frame"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{combining-subsetting}{%
+\section{Combining subsetting}\label{combining-subsetting}}
+
+Notice that we can often subset further until having the desired subset.
+Here are a few examples.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}\OperatorTok{$}\NormalTok{mpg[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{]}
+\CommentTok{#> [1] 21.0 21.0 22.8 21.4}
+\NormalTok{mylist[[}\StringTok{"ournames"}\NormalTok{]][}\DecValTok{1}\NormalTok{]}
+\CommentTok{#> [1] "Jim"}
+\NormalTok{mylist}\OperatorTok{$}\NormalTok{ournames[}\DecValTok{1}\NormalTok{]}
+\CommentTok{#> [1] "Jim"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{subsetting-with-one-condition}{%
+\section{Subsetting with one
+condition}\label{subsetting-with-one-condition}}
+
+We can use conditions for subsetting
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars[mtcars}\OperatorTok{$}\NormalTok{cyl}\OperatorTok{==}\DecValTok{8}\NormalTok{,]}
+\CommentTok{#>                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb}
+\CommentTok{#> Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2}
+\CommentTok{#> Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4}
+\CommentTok{#> Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3}
+\CommentTok{#> Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3}
+\CommentTok{#> Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3}
+\CommentTok{#> Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4}
+\CommentTok{#> Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4}
+\CommentTok{#> Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4}
+\CommentTok{#> Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2}
+\CommentTok{#> AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2}
+\CommentTok{#> Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4}
+\CommentTok{#> Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2}
+\CommentTok{#> Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4}
+\CommentTok{#> Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8}
+\NormalTok{mtcars[mtcars}\OperatorTok{$}\NormalTok{cyl}\OperatorTok{==}\DecValTok{8} \OperatorTok{&}\StringTok{ }\NormalTok{mtcars}\OperatorTok{$}\NormalTok{carb}\OperatorTok{==}\DecValTok{4}\NormalTok{,]}
+\CommentTok{#>                      mpg cyl disp  hp drat    wt  qsec vs am gear carb}
+\CommentTok{#> Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4}
+\CommentTok{#> Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4}
+\CommentTok{#> Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4}
+\CommentTok{#> Chrysler Imperial   14.7   8  440 230 3.23 5.345 17.42  0  0    3    4}
+\CommentTok{#> Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4}
+\CommentTok{#> Ford Pantera L      15.8   8  351 264 4.22 3.170 14.50  0  1    5    4}
+\NormalTok{mtcars[mtcars}\OperatorTok{$}\NormalTok{cyl}\OperatorTok{==}\DecValTok{8}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"cyl"}\NormalTok{, }\StringTok{"mpg"}\NormalTok{, }\StringTok{"wt"}\NormalTok{)]}
+\CommentTok{#>                     cyl  mpg    wt}
+\CommentTok{#> Hornet Sportabout     8 18.7 3.440}
+\CommentTok{#> Duster 360            8 14.3 3.570}
+\CommentTok{#> Merc 450SE            8 16.4 4.070}
+\CommentTok{#> Merc 450SL            8 17.3 3.730}
+\CommentTok{#> Merc 450SLC           8 15.2 3.780}
+\CommentTok{#> Cadillac Fleetwood    8 10.4 5.250}
+\CommentTok{#> Lincoln Continental   8 10.4 5.424}
+\CommentTok{#> Chrysler Imperial     8 14.7 5.345}
+\CommentTok{#> Dodge Challenger      8 15.5 3.520}
+\CommentTok{#> AMC Javelin           8 15.2 3.435}
+\CommentTok{#> Camaro Z28            8 13.3 3.840}
+\CommentTok{#> Pontiac Firebird      8 19.2 3.845}
+\CommentTok{#> Ford Pantera L        8 15.8 3.170}
+\CommentTok{#> Maserati Bora         8 15.0 3.570}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{subsetting-and-assignment}{%
+\section{Subsetting and assignment}\label{subsetting-and-assignment}}
+
+Subsetting can be used to change a part of an object through assignment.
+Assign \texttt{NULL} to delete subset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.mat}
+\CommentTok{#>   a b c d e f}
+\CommentTok{#> A 9 5 4 9 9 5}
+\CommentTok{#> B 9 7 7 9 1 3}
+\CommentTok{#> C 2 1 9 1 9 9}
+\CommentTok{#> D 8 6 2 4 9 4}
+\CommentTok{#> E 6 7 4 5 0 8}
+\NormalTok{my.mat[,}\DecValTok{1}\NormalTok{]<-}\DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(my.mat)}
+\NormalTok{my.mat}
+\CommentTok{#>   a b c d e f}
+\CommentTok{#> A 1 5 4 9 9 5}
+\CommentTok{#> B 2 7 7 9 1 3}
+\CommentTok{#> C 3 1 9 1 9 9}
+\CommentTok{#> D 4 6 2 4 9 4}
+\CommentTok{#> E 5 7 4 5 0 8}
+\NormalTok{mtcars}\OperatorTok{$}\NormalTok{mpg[}\DecValTok{1}\NormalTok{]<-}\DecValTok{1234}
+\KeywordTok{names}\NormalTok{(mtcars)}
+\CommentTok{#>  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"}
+\CommentTok{#> [11] "carb"}
+\NormalTok{mtcars}\OperatorTok{$}\NormalTok{drat<-}\OtherTok{NULL} \CommentTok{# delete variable drat in data frame mtcars}
+\CommentTok{# does not delete in matrix}
+\KeywordTok{names}\NormalTok{(mtcars)}
+\CommentTok{#>  [1] "mpg"  "cyl"  "disp" "hp"   "wt"   "qsec" "vs"   "am"   "gear" "carb"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{using-which}{%
+\section{\texorpdfstring{Using
+\texttt{which()}}{Using which()}}\label{using-which}}
+
+\texttt{which()} gives the integers that correspond to the boolean
+(logical) \texttt{TRUE}.\\
+This can help subsetting
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vb<-}\DecValTok{1500}\OperatorTok{:}\DecValTok{1530}
+\NormalTok{vb}
+\CommentTok{#>  [1] 1500 1501 1502 1503 1504 1505 1506 1507 1508 1509 1510 1511 1512 1513}
+\CommentTok{#> [15] 1514 1515 1516 1517 1518 1519 1520 1521 1522 1523 1524 1525 1526 1527}
+\CommentTok{#> [29] 1528 1529 1530}
+\KeywordTok{which}\NormalTok{(vb}\OperatorTok{%%}\DecValTok{5}\OperatorTok{==}\DecValTok{0}\NormalTok{) }\CommentTok{# which is divisible by 5 (modulo is 0) ?}
+\CommentTok{#> [1]  1  6 11 16 21 26 31}
+\CommentTok{# notice that this is asking each element of vb, }
+\CommentTok{# which() reports the positions for which the answer is TRUE }
+\NormalTok{vb[}\KeywordTok{which}\NormalTok{(vb}\OperatorTok{%%}\DecValTok{5}\OperatorTok{==}\DecValTok{0}\NormalTok{)] }
+\CommentTok{#> [1] 1500 1505 1510 1515 1520 1525 1530}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{more-advanced-stuff}{%
+\section{More advanced stuff}\label{more-advanced-stuff}}
+
+\hypertarget{difference-between-simplifying-and-preserving}{%
+\subsection{Difference between simplifying and
+preserving}\label{difference-between-simplifying-and-preserving}}
+
+We say `preserve' to say the same structure is maintained when
+subsetting (e.g., a subset of a data frame remains a data frame).\\
+Simplifying does not keep the structure but gives the simplest output
+possible.\\
+\texttt{drop} argument allows to preserve (\texttt{drop=FALSE}) or not
+(\texttt{drop=\ TRUE}).\\
+\texttt{{[}{]}} usually preserves, \texttt{{[}{[}{]}{]}} usually
+simplifies.\\
+To better understand, check the classes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{class}\NormalTok{(mylist[}\DecValTok{1}\NormalTok{]), }\KeywordTok{class}\NormalTok{(mylist[[}\DecValTok{1}\NormalTok{]]))}
+\CommentTok{#> [1] "1 string mismatch"}
+\KeywordTok{class}\NormalTok{(mylist[}\DecValTok{1}\NormalTok{])}
+\CommentTok{#> [1] "list"}
+\KeywordTok{class}\NormalTok{(mylist[[}\DecValTok{1}\NormalTok{]])}
+\CommentTok{#> [1] "integer"}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{class}\NormalTok{(mylist), }\KeywordTok{class}\NormalTok{(mylist[}\DecValTok{1}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{class}\NormalTok{(mylist), }\KeywordTok{class}\NormalTok{(mylist[[}\DecValTok{1}\NormalTok{]]))}
+\CommentTok{#> [1] "1 string mismatch"}
+\end{Highlighting}
+\end{Shaded}
+
+We see that \texttt{{[}{]}} has preserved the class of \texttt{mylist}
+(r class(mylist)), while \texttt{{[}{[}{]}{]}} has not! Another striking
+example is the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ma2 <-}\StringTok{ }\NormalTok{my.mat[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{]}
+\KeywordTok{class}\NormalTok{(ma2)}
+\CommentTok{#> [1] "matrix"}
+\NormalTok{ma3 <-}\StringTok{ }\NormalTok{my.mat[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{]}
+\KeywordTok{class}\NormalTok{(ma3)}
+\CommentTok{#> [1] "numeric"}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{ma3} is NOT a matrix anymore!!! This is because one of its
+dimensions is 1. Losing track of the class when subsetting can generate
+lots of problems in the middle of a large code. And it is a common
+source of error! To be sure of keeping the class, we can use
+\texttt{drop=FALSE} (the class will not be dropped to, usually, a
+vector).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ma4 <-}\StringTok{ }\NormalTok{my.mat[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, drop=}\OtherTok{FALSE}\NormalTok{]}
+\NormalTok{ma4}
+\CommentTok{#>   a b c}
+\CommentTok{#> A 1 5 4}
+\KeywordTok{class}\NormalTok{(ma4)}
+\CommentTok{#> [1] "matrix"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{conditions}{%
+\chapter{Conditions}\label{conditions}}
+
+The general purpose of conditions is to control the flow of our code
+when executed by R.\\
+In R, it builds on statements such as \texttt{if} and \texttt{else}.
+
+\hypertarget{if-statement}{%
+\section{\texorpdfstring{\texttt{if}
+statement}{if statement}}\label{if-statement}}
+
+The simplest form for a condition uses a \texttt{if} statement.\\
+The form is then:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition) \{}
+\CommentTok{# code to be executed if the condition is met}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+The key point is that R will run the code until it finds a condition
+that is met. If it doesn't find any, it continues to the next lines of
+code.\\
+Here is an example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gains <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\KeywordTok{sum}\NormalTok{(gains)}
+\CommentTok{#> [1] 20}
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{sum}\NormalTok{(gains) }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Congratulations, you are winning!"}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{#> [1] "Congratulations, you are winning!"}
+
+\NormalTok{gains[}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\DecValTok{-10} \CommentTok{# change the first element of gains}
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{sum}\NormalTok{(gains) }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Congratulations, you are winning!"}\NormalTok{)}
+\NormalTok{\} }\CommentTok{# notice that there is no output, because the condition was not met}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{else-statement}{%
+\section{\texorpdfstring{\texttt{else}
+statement}{else statement}}\label{else-statement}}
+
+What happens when the condition is not met? It's on the user to decide.
+It can be nothing or\ldots{} something else!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition) \{ }
+\CommentTok{# code to be executed if the condition is met}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\CommentTok{# code to be executed if the condition is NOT met}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Here is an example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gains<-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\NormalTok{gains[}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\DecValTok{-10} \CommentTok{# change the first element of gains}
+\KeywordTok{sum}\NormalTok{(gains)}
+\CommentTok{#> [1] 0}
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{sum}\NormalTok{(gains) }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Congratulations, you are winning!"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"You are not winning!"}\NormalTok{)}
+\NormalTok{\} }\CommentTok{# notice that now there is an output!}
+\CommentTok{#> [1] "You are not winning!"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{else-if-statement}{%
+\section{\texorpdfstring{\texttt{else\ if}
+statement}{else if statement}}\label{else-if-statement}}
+
+\texttt{else\ if} allows us to introduce another condition to our flow
+of code
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition_}\DecValTok{1}\NormalTok{) \{ }
+\CommentTok{# code to be executed if the condition_1 is met}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (condition_}\DecValTok{2}\NormalTok{) \{}
+\CommentTok{# code to be executed if the condition_2 is met}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\CommentTok{# code to be executed if NEITHER condition_1 NOR condition_2 is met}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+We can use as many \texttt{else\ if} statements as we want.\\
+Here is an example with only one \texttt{else\ if}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gains<-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\NormalTok{gains[}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\DecValTok{-10} \CommentTok{# change the first element of gains}
+\KeywordTok{sum}\NormalTok{(gains)}
+\CommentTok{#> [1] 0}
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{sum}\NormalTok{(gains) }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Congratulations, you are winning!"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{sum}\NormalTok{(gains)}\OperatorTok{==}\DecValTok{0}\NormalTok{) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"You just break even!"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"You are losing!"}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{#> [1] "You just break even!"}
+\end{Highlighting}
+\end{Shaded}
+
+Notice the potential problem of not putting a \texttt{else} statement at
+the end of the conditions system.
+
+\hypertarget{ifelse-statement}{%
+\section{\texorpdfstring{\texttt{ifelse}
+statement}{ifelse statement}}\label{ifelse-statement}}
+
+For \textbf{short} conditions, we can use \texttt{ifelse}.\\
+The form is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ifelse}\NormalTok{(condition, value }\ControlFlowTok{if}\NormalTok{ condition met, value }\ControlFlowTok{if}\NormalTok{ value not met)}
+\end{Highlighting}
+\end{Shaded}
+
+Here is an example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gains <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\NormalTok{sign <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(}\KeywordTok{sum}\NormalTok{(gains)}\OperatorTok{>=}\DecValTok{0}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"-"}\NormalTok{)}
+\NormalTok{sign}
+\CommentTok{#> [1] "+"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{logical-operators-and}{%
+\section{\texorpdfstring{Logical operators: \texttt{\&},
+\texttt{\textbar{}} and
+\texttt{!}}{Logical operators: \&, \textbar{} and !}}\label{logical-operators-and}}
+
+Logical operators are used to combine, mix or negate several conditions:
+- \texttt{\&} means AND - \texttt{\textbar{}} means OR - \texttt{!}
+means NOT
+
+De Morgan's laws may help here.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{10}\OperatorTok{%%}\DecValTok{2}\OperatorTok{==}\DecValTok{0} \OperatorTok{&}\StringTok{ }\DecValTok{27}\OperatorTok{%%}\DecValTok{3}\OperatorTok{==}\DecValTok{0}\NormalTok{) }\CommentTok{# equivalent to (TRUE and TRUE), hence TRUE}
+\CommentTok{#> [1] TRUE}
+\OtherTok{TRUE} \OperatorTok{&}\StringTok{ }\OtherTok{FALSE}
+\CommentTok{#> [1] FALSE}
+\OperatorTok{!}\OtherTok{TRUE} 
+\CommentTok{#> [1] FALSE}
+\OperatorTok{!}\NormalTok{(}\OtherTok{TRUE} \OperatorTok{&}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+\CommentTok{#> [1] FALSE}
+\OperatorTok{!}\NormalTok{(}\OtherTok{TRUE} \OperatorTok{&}\StringTok{ }\OperatorTok{!}\OtherTok{TRUE}\NormalTok{)}
+\CommentTok{#> [1] TRUE}
+\NormalTok{((}\DecValTok{10}\OperatorTok{%%}\DecValTok{2}\OperatorTok{==}\DecValTok{0} \OperatorTok{&}\StringTok{ }\DecValTok{27}\OperatorTok{%%}\DecValTok{2}\OperatorTok{==}\DecValTok{0}\NormalTok{)) }\CommentTok{# equivalent to (TRUE and FALSE), hence FALSE}
+\CommentTok{#> [1] FALSE}
+\NormalTok{((}\DecValTok{10}\OperatorTok{%%}\DecValTok{2}\OperatorTok{==}\DecValTok{0} \OperatorTok{|}\StringTok{ }\DecValTok{27}\OperatorTok{%%}\DecValTok{2}\OperatorTok{==}\DecValTok{0}\NormalTok{)) }\CommentTok{# equivalent to (TRUE or FALSE), hence TRUE}
+\CommentTok{#> [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{writing-and-interpreting-a-condition}{%
+\section{Writing and interpreting a
+condition}\label{writing-and-interpreting-a-condition}}
+
+Notice that what R looks for in a condition is a either a TRUE or a
+FALSE.\\
+If it encounters a TRUE, it executes the commands, otherwise, it
+doesn't.\\
+Remember there are many ways to obtain one of these two logicals.\\
+Any of these ways will work as a condition.\\
+Here are examples of less trivial ways of writing a condition
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gains<-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{is.numeric}\NormalTok{(gains)) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Seems like it is a numeric vector..."}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{#> [1] "Seems like it is a numeric vector..."}
+\CommentTok{# here, is.numeric(gains) evaluates to TRUE, hence, the code is executed!}
+\CommentTok{# the beginner's way would be to replace the condition by}
+\CommentTok{# if (class(gains)=="numeric")}
+
+\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{is.factor}\NormalTok{(gains)) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Yeah! We avoided the factor..."}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{#> [1] "Yeah! We avoided the factor..."}
+\CommentTok{# the beginner would write if (class(gains)!="factor")}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
+
+\bibliography{book.bib,packages.bib,online.bib}
+
+
+\end{document}

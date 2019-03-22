@@ -1,0 +1,22 @@
+# Customize output {#custom-ouptut}
+
+This chapter is about choosing and/or modifying the way the output file looks like.
+
+## Multiple built-in output types
+
+[complete this section]
+From pdf to slides, through webpages and notebooks.
+
+## New types provided by packages
+
+[complete this section]
+These are more variations of the above.
+
+## CSS: custom html
+
+A file to change how html outputs look like.
+
+## Latex preamble
+
+This file is added to the preamble of the Latex file to modify how the pdf output is compiled.
+
