@@ -1499,6 +1499,7 @@ h2{
 color: #2E86C1 ;
 font-family: palatino;
 margin-bottom: 0px;
+
 }
 h1{
 color: #21618C ;
@@ -1506,6 +1507,7 @@ font-family: palatino;
 text-align: center;
 margin-top: 50px;
 margin-bottom: 15px;
+
 }
 #nav-top span.glyphicon {
 color: #2E86C1 ;
@@ -1565,6 +1567,14 @@ $(document).ready(function () {
     <h2><a href="#content">DS4B: Ongoing Tasks</a></h2>
     <div id="text-table-of-contents">
       <ul>
+      <li><a href="#lecture-on-march-22">Lecture on March 22</a><ul>
+      <li><a href="#build-minimal-book-on-your-machine">Build minimal book on your machine</a></li>
+      <li><a href="#understand-the-role-of-the-files-in-the-folder">Understand the role of the files in the folder</a></li>
+      <li><a href="#exercises">Exercises</a></li>
+      <li><a href="#install-a-git-application">Install a Git application</a></li>
+      <li><a href="#sign-for-github">Sign for GitHub</a></li>
+      <li><a href="#create-github-repo-and-link-your-machine-to-it-one-per-group">Create GitHub repo and link your machine to it (one per group)</a></li>
+      </ul></li>
       <li><a href="#homework-for-march-22">Homework for March 22</a><ul>
       <li><a href="#train-the-workflow">Train the workflow</a></li>
       </ul></li>
@@ -1578,12 +1588,11 @@ $(document).ready(function () {
       <li><a href="#install-applications">Install applications</a></li>
       </ul></li>
       <li><a href="#planned-tasks">Planned tasks</a><ul>
-      <li><a href="#install-a-git-application">Install a Git application</a></li>
-      <li><a href="#set-up-github">Set up GitHub</a></li>
       <li><a href="#include-images">Include images</a></li>
       <li><a href="#referencing-of-sectionsfiguresequations">Referencing of sections/figures/equations…</a></li>
       <li><a href="#introduction-to-latex">Introduction to Latex</a></li>
       <li><a href="#introduction-to-html-customization-css">Introduction to html customization (css)</a></li>
+      <li><a href="#easy-slides-in-rmarkdow">Easy slides in RMarkdow</a></li>
       </ul></li>
       </ul>
     </div>
@@ -1594,26 +1603,74 @@ $(document).ready(function () {
 Notice that the file will be updated in reverse chronological order (last section entries appear first; normal order <em>within</em> the section). That is meant to help follow the thread. The table of contents, specially on HTML-like formats, will be very useful to navigate the tasks.<br />
 The pdf file (and only it) is instructed to count the sections in reverse order.<br />
 A preview of the HTML file, which is easier to navigate, is available: <a href="https://htmlpreview.github.io/?https://github.com/AntonioFidalgo/MIBM/blob/master/tasks.html">preview html here.</a></p>
+<div id="lecture-on-march-22" class="section level1">
+<h1>Lecture on March 22</h1>
+<div id="build-minimal-book-on-your-machine" class="section level2">
+<h2>Build minimal book on your machine</h2>
+<p>Install the required package, if you haven’t done it: <code>install.packages(&quot;bookdown&quot;)</code>.<br />
+Download the minimal bookdown example at <a href="https://github.com/rstudio/bookdown-demo">https://github.com/rstudio/bookdown-demo</a>.<br />
+Copy all the files of that folder into your book folder.<br />
+Change at least the three following files with self-describing fields (e.g., author):</p>
+<p>. <code>_output.yml</code><br />
+. <code>_bookdown.yml</code><br />
+. <code>index.Rmd</code></p>
+<p>Build the book in different formats.<br />
+That’s all: you are ready to write your book.</p>
+</div>
+<div id="understand-the-role-of-the-files-in-the-folder" class="section level2">
+<h2>Understand the role of the files in the folder</h2>
+<p>Analyze / change / add / remove files from your folder in order to understand how to structure a book with Rmd files. Check the following points (non-exhaustive list):</p>
+<p>. what files are included in the output,<br />
+. how these files are structured and how they enter the book,<br />
+. what is the role of the other files in the folder.</p>
+<p>Get help at the book about bookdown, which is a book written with bookdown at <a href="https://bookdown.org/yihui/bookdown/">https://bookdown.org/yihui/bookdown/</a>.</p>
+</div>
+<div id="exercises" class="section level2">
+<h2>Exercises</h2>
+<p>Check out the <code>Exercises.Rmd/pdf/...</code> file and answer the current set of exercises.</p>
+</div>
+<div id="install-a-git-application" class="section level2">
+<h2>Install a Git application</h2>
+<p>Another application needed in the class is a <a href="https://git-scm.com/downloads">Git (https://git-scm.com/downloads)</a> distribution. This is also a free software.<br />
+Once you have installed Git for your version control, activate it in RStudio: <em>Tools&gt; Global Options&gt; Git/SVN</em> and click on <em>Enable version control interface for RStudio projects</em>.<br />
+Also generate a SHH RSA key. We will use it to identify at the GitHub repo.</p>
+</div>
+<div id="sign-for-github" class="section level2">
+<h2>Sign for GitHub</h2>
+<p>Create an account at GitHub at <a href="https://github.com/join">https://github.com</a>.</p>
+</div>
+<div id="create-github-repo-and-link-your-machine-to-it-one-per-group" class="section level2">
+<h2>Create GitHub repo and link your machine to it (one per group)</h2>
+<p>One member of each group must create a new repository (pronounced ‘repo’) whose name is <strong>exactly</strong> the same as your R project / book folder (e.g., ‘myRbook’).<br />
+On the top left menu in GitHub, go to <em>Settings&gt; SHH and GPG keys</em> and click on ‘New SHH key’. Paste the SHH key generated by RStudio.</p>
+<p>In RStudio go to <em>Tools&gt; Project Options…&gt; Git/SVN</em>. Under <em>Version control system</em>, select ‘Git’.<br />
+Still in RStudio, <em>Tools&gt; Terminal&gt; New Terminal</em>. This open a Terminal where you can paste the message shown at the creation of the repo (changing the names, of course):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">git remote add origin https<span class="op">:</span><span class="er">//</span>github.com<span class="op">/</span>YOURNAME<span class="op">/</span>YOURREPO.git</a>
+<a class="sourceLine" id="cb1-2" title="2">git push <span class="op">-</span>u origin master</a></code></pre></div>
+<p>Your local <code>master</code> should now be connected to the <code>master</code> on GitHub.<br />
+If necessary, restart RStudio. At the restart, a Git thumbnail should appear in a pane. You are ready to commit and push your files.</p>
+</div>
+</div>
 <div id="homework-for-march-22" class="section level1">
 <h1>Homework for March 22</h1>
 <div id="train-the-workflow" class="section level2">
 <h2>Train the workflow</h2>
 <p>Play around with the example that we did in class to illustrate <strong>reproducible research</strong> (rr) and <strong>dynamic documents</strong> (dd).<br />
-The file is on GitHub, but I slightly modified the YAML in order to allow the illustration of cross-references of sections. This new format (<code>bookdown::pdf_document2</code>) requires a R package. Hence, you need to install it with <code>install.packages(&#39;bookdown&#39;)</code> or by using the menu <em>Tools&gt; Install Packages…</em>.</p>
+The file is on GitHub, but I slightly modified the YAML in order to allow the illustration of cross-references of sections. This new format (<code>bookdown::pdf_document2</code>) requires a R package. Hence, you need to install it with <code>install.packages(&#39;bookdown&#39;)</code> or by using the menu <em>Tools&gt; Install Packages…</em></p>
 </div>
 </div>
 <div id="lecture-on-march-15" class="section level1">
 <h1>Lecture on March 15</h1>
 <div id="check-your-rrstudiolatex-installation" class="section level2">
 <h2>Check your R/Rstudio/Latex installation</h2>
-<p>Create a new Rmd file <em>File&gt; New File&gt; R Markdown</em>. And then click on Knitr, possibly by chosing the output format on the scroll down menu (i.e., Knit to…).</p>
+<p>Create a new Rmd file <em>File&gt; New File&gt; R Markdown</em>. And then click on Knitr, possibly by choosing the output format on the scroll down menu (i.e., Knit to…).</p>
 <p>If needed, install required packages (e.g., <code>knitr</code>).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</a></code></pre></div>
 <p>Notice that, in order to create a pdf document, you must have a Latex distribution installed; similarly for Word output, Microsoft Word is necessary.</p>
 </div>
 <div id="create-own-rmd-file" class="section level2">
 <h2>Create own Rmd file</h2>
-<p>Notice that everytime such new file is created with the menu, it comes with pre-populated content. It can help, but it can also be annoying because you need first to erase it and start writing your stuff.</p>
+<p>Notice that every time such new file is created with the menu, it comes with pre-populated content. It can help, but it can also be annoying because you need first to erase it and start writing your stuff.</p>
 <p>Your first Rmd can be a change in this default content or a copy from the class GitHub (or your very own).</p>
 </div>
 <div id="create-class-folders" class="section level2">
@@ -1624,7 +1681,7 @@ Put your first Rmd file into your book folder.</p>
 <div id="create-your-project" class="section level2">
 <h2>Create your project</h2>
 <p><em>File&gt; New project&gt; Existing Directory</em> and chose that book folder.<br />
-Now, everytime you create content for your book, you must start a Rstudio session <em>File&gt; Open Project…</em><br />
+Now, every time you create content for your book, you must start a Rstudio session <em>File&gt; Open Project…</em><br />
 All the files of the project are the files of the folder, and vice versa.</p>
 </div>
 </div>
@@ -1644,15 +1701,6 @@ All the files of the project are the files of the folder, and vice versa.</p>
 <div id="planned-tasks" class="section level1 unnumbered">
 <h1>Planned tasks</h1>
 <p>This is a very incomplete list of tasks that will enter our workflow at some point. They are mentioned here for a reference.</p>
-<div id="install-a-git-application" class="section level2 unnumbered">
-<h2>Install a Git application</h2>
-<p>Another application needed in the class is a <a href="https://git-scm.com/downloads">Git (https://git-scm.com/downloads)</a> distribution. This is also a free software.</p>
-</div>
-<div id="set-up-github" class="section level2 unnumbered">
-<h2>Set up GitHub</h2>
-<p>One member of the group must create a free <a href="https://github.com/join">GitHub (https://github.com/join)</a> account. In that account, you will create a new repository (pronounced ‘repo’) whose name is exactly the same as your R project / book folder (e.g., ‘myRbook’).<br />
-The linking between GitHub and Rstudio will be explained later.</p>
-</div>
 <div id="include-images" class="section level2 unnumbered">
 <h2>Include images</h2>
 </div>
@@ -1667,6 +1715,10 @@ The linking between GitHub and Rstudio will be explained later.</p>
 <h2>Introduction to html customization (css)</h2>
 <p>As requested by Mr. Miebach.</p>
 </div>
+<div id="easy-slides-in-rmarkdow" class="section level2 unnumbered">
+<h2>Easy slides in RMarkdow</h2>
+<p>As requested by Mr. Gaulke.</p>
+</div>
 </div>
 </div>
 
@@ -1675,7 +1727,7 @@ The linking between GitHub and Rstudio will be explained later.</p>
 
 <div id="postamble" data-toggle="wy-nav-shift" class="status">
 <p class="author"><span class="glyphicon glyphicon-user"></span> A. Fidalgo</p>
-<p class="date"><span class="glyphicon glyphicon-calendar"></span> <strong>Last update:</strong> March 15, 23:07</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> <strong>Last update:</strong> March 20, 11:27</p>
 </div>
 
 
