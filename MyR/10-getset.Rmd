@@ -96,7 +96,7 @@ Importantly, make sure that the new member has reading and **writing** rights in
 
 After the steps above, the newly added member receives an email to confirm the participation the organization / team.   
 Navigate now to the team's page and locate the repo that the owner has created.  
-A button-menu allows to 'Clone or download the repo'. Click to show the https address of the repo, `https://github.com/ORGANIZATION/team.git` and copy that link.  
+A button-menu allows to 'Clone or download the repo'. Click to show the https address of the repo, `https://github.com/ORGANIZATION/repo.git` and copy that link.  
 Open a simple RStudio session (not a project!). Open a new Terminal (_Tools> Terminal> New Terminal_) and type `cd` (change directory) and a path to the folder where you want the repo to be saved. For instance,
 
 ```{r, eval=FALSE}
@@ -107,7 +107,7 @@ The terminal is writing into that folder, as indicated by the path before the `$
 Recall that you copied the address of the team's repo. Then, in command line, now type the following commands and your copied address:
 
 ```{r, eval=FALSE}
-git clone https://github.com/ORGANIZATION/team.git 
+git clone https://github.com/ORGANIZATION/repo.git 
 ```
 
 The whole repo is now a new folder in your directory. If all went well, you can now pull and push into that repo in GitHub.
