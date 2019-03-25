@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 1 Getting set | Learning Data Science in R</title>
+  <title>Learning Data Science in R</title>
   <meta name="description" content="These are notes gathering my experience in data science with R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 1 Getting set | Learning Data Science in R" />
+  <meta property="og:title" content="Learning Data Science in R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Getting set | Learning Data Science in R" />
+  <meta name="twitter:title" content="Learning Data Science in R" />
   
   <meta name="twitter:description" content="These are notes gathering my experience in data science with R." />
   
@@ -35,7 +35,6 @@
 <link rel="next" href="rmd.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -136,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="getset.html"><a href="getset.html#sign-for-github"><i class="fa fa-check"></i><b>1.2</b> Sign for GitHub</a></li>
 <li class="chapter" data-level="1.3" data-path="getset.html"><a href="getset.html#create-your-project"><i class="fa fa-check"></i><b>1.3</b> Create your project</a></li>
 <li class="chapter" data-level="1.4" data-path="getset.html"><a href="getset.html#create-github-repo-and-link-your-machine-to-it"><i class="fa fa-check"></i><b>1.4</b> Create GitHub repo and link your machine to it</a></li>
+<li class="chapter" data-level="1.5" data-path="getset.html"><a href="getset.html#collaboration-on-github"><i class="fa fa-check"></i><b>1.5</b> Collaboration on GitHub</a></li>
 </ul></li>
 <li class="part"><span><b>II Source file and output files</b></span></li>
 <li class="chapter" data-level="2" data-path="rmd.html"><a href="rmd.html"><i class="fa fa-check"></i><b>2</b> Rmd files</a><ul>
@@ -205,12 +205,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> Install applications</h2>
 <p>Download the following free applications, available on all platforms:</p>
 <ol style="list-style-type: decimal">
-<li><a href="https://cran.uni-muenster.de/">R (https://cran.uni-muenster.de/)</a></li>
-<li><a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio, free Desktop version (https://www.rstudio.com/products/rstudio/download/#download)</a></li>
+<li><a href="https://cran.uni-muenster.de/">R</a></li>
+<li><a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio, free Desktop version</a></li>
 <li><a href="https://www.latex-project.org/get/">A Latex distribution</a> (e.g., MacTex for Mac or MiKTeX for Windows machines)</li>
 </ol>
 <p>The first two are easily and quickly installed. The last is a very large program (a few Gb) and needs time to install.</p>
-<p>Another application needed is a <a href="https://git-scm.com/downloads">Git (https://git-scm.com/downloads)</a> distribution. This is also a free software.<br />
+<p>Another application needed is a</p>
+<ol start="4" style="list-style-type: decimal">
+<li><a href="https://git-scm.com/downloads">Git distribution</a></li>
+</ol>
+<p>This is also a free software.<br />
 Once you have installed Git for version control, activate it in RStudio: <em>Tools&gt; Global Options&gt; Git/SVN</em> and click on <em>Enable version control interface for RStudio projects</em>.<br />
 Also generate a SHH RSA key. We will use it to identify at the GitHub repo.</p>
 </div>
@@ -231,20 +235,49 @@ On the top left menu in GitHub, go to <em>Settings&gt; SHH and GPG keys</em> and
 <p>In RStudio go to <em>Tools&gt; Project Options…&gt; Git/SVN</em>. Under <em>Version control system</em>, select ‘Git’.<br />
 Still in RStudio, <em>Tools&gt; Terminal&gt; New Terminal</em>. This open a Terminal where you type commands.</p>
 <p>Start by initializing Git on the terminal.</p>
-<pre class="sourceCode r"><code class="sourceCode r">git init</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">git init</a></code></pre></div>
 <p>Then paste the message shown at the creation of the repo (changing the names, of course):</p>
-<pre class="sourceCode r"><code class="sourceCode r">git remote add origin https<span class="op">:</span><span class="er">//</span>github.com<span class="op">/</span>YOURNAME<span class="op">/</span>YOURREPO.git
-git push <span class="op">-</span>u origin master</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">git remote add origin https<span class="op">:</span><span class="er">//</span>github.com<span class="op">/</span>YOURNAME<span class="op">/</span>YOURREPO.git</a>
+<a class="sourceLine" id="cb2-2" title="2">git push <span class="op">-</span>u origin master</a></code></pre></div>
 <p>Your local <code>master</code> should now be connected to the <code>master</code> on GitHub.<br />
 If necessary, restart RStudio. At the restart, a Git thumbnail should appear in a pane. You are ready to commit and push your files.</p>
 <div id="troubleshooting" class="section level3">
 <h3><span class="header-section-number">1.4.1</span> Troubleshooting</h3>
 <p>If the procedure above works, great! One must be aware, however, that it sometimes hits some problem unexpected and difficult to understand problem. In these cases, a classic solution is to copy and google the error message with a first term such as “RStudio”.<br />
 In my experience, the following hack worked. Find the invisible file of the repo <em>.git&gt; config</em>. Hidden files on Mac are turned visible by the keyboard key <code>CMD + SHIFT + .</code>. In that file, delete the following part (including the space it takes)</p>
-<pre class="sourceCode r"><code class="sourceCode r">[remote <span class="st">&quot;origin&quot;</span>]
-    url =<span class="st"> </span>git<span class="op">@</span>github.com<span class="op">:</span>USERNAME<span class="op">/</span>repo.git
-    fetch =<span class="st"> </span><span class="op">+</span>refs<span class="op">/</span>heads<span class="op">/</span><span class="er">*:</span>refs<span class="op">/</span>remotes<span class="op">/</span>origin<span class="op">/</span><span class="er">*</span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">[remote <span class="st">&quot;origin&quot;</span>]</a>
+<a class="sourceLine" id="cb3-2" title="2">    url =<span class="st"> </span>git<span class="op">@</span>github.com<span class="op">:</span>USERNAME<span class="op">/</span>repo.git</a>
+<a class="sourceLine" id="cb3-3" title="3">    fetch =<span class="st"> </span><span class="op">+</span>refs<span class="op">/</span>heads<span class="op">/</span><span class="er">*:</span>refs<span class="op">/</span>remotes<span class="op">/</span>origin<span class="op">/</span><span class="er">*</span></a></code></pre></div>
 <p>Then, try again the procedure above.</p>
+</div>
+</div>
+<div id="collaboration-on-github" class="section level2">
+<h2><span class="header-section-number">1.5</span> Collaboration on GitHub</h2>
+<p>There are various established ways for collaborating on a GitHub repo. As a matter of facts, collaboration on a project is the <em>raison d’etre</em> of GitHub.<br />
+We illustrate here the easiest of them, namely the joint reading and writing into one repo by all the members of a team.<br />
+Importantly, it is assumed that all members of the group are able to push/pull code from RStudio to an experimental repo on GitHub (see above).<br />
+The following are the steps in the collaboration’s setup.</p>
+<div id="owner-of-the-organization" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Owner of the organization</h3>
+<p>One member of the group creates an organization on GitHub under <em>Settings&gt; Organizations&gt; New organization</em>.<br />
+Then, under that organization, this member of the team creates a new repo whose name is the same as the folder and R project that the group will work on (e.g., ‘ouRbook’).<br />
+The owner of the organization connects from RStudio to the repo and populates it with the current files of the project.<br />
+Still as a task of the owner, create a team. Under the organization page in GitHub, simply click on ‘New team’ and give it a name.<br />
+A team now appears in the organization page. In the page of that team, click on ‘Add a member’. A window appears where the member to be added can be searched for and added.<br />
+Once that member is found and selected, make the double step of adding him/her to the team AND assign him/her to the repo. This second step can still be made later, but it’s simpler to do it right then.<br />
+Importantly, make sure that the new member has reading and <strong>writing</strong> rights into the repo. This again, can be changed later by navigating the team’s page.</p>
+</div>
+<div id="member-of-the-team" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Member of the team</h3>
+<p>After the steps above, the newly added member receives an email to confirm the participation the organization / team.<br />
+Navigate now to the team’s page and locate the repo that the owner has created.<br />
+A button-menu allows to ‘Clone or download the repo’. Click to show the https address of the repo, <code>https://github.com/ORGANIZATION/team.git</code> and copy that link.<br />
+Open a simple RStudio session (not a project!). Open a new Terminal (<em>Tools&gt; Terminal&gt; New Terminal</em>) and type <code>cd</code> (change directory) and a path to the folder where you want the repo to be saved. For instance,</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">cd Dropbox<span class="op">/</span>Fresenius<span class="op">/</span>DS4B </a></code></pre></div>
+<p>The terminal is writing into that folder, as indicated by the path before the <code>$</code> sign in command line of the terminal.<br />
+Recall that you copied the address of the team’s repo. Then, in command line, now type the following commands and your copied address:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">git clone https<span class="op">:</span><span class="er">//</span>github.com<span class="op">/</span>ORGANIZATION<span class="op">/</span>team.git </a></code></pre></div>
+<p>The whole repo is now a new folder in your directory. If all went well, you can now pull and push into that repo in GitHub.</p>
 
 </div>
 </div>
@@ -278,7 +311,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapaper": false,
+"instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -288,10 +321,6 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
-},
-"history": {
 "link": null,
 "text": null
 },
@@ -310,7 +339,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

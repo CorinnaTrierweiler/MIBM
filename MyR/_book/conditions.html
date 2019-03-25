@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 8 Conditions | Learning Data Science in R</title>
+  <title>Learning Data Science in R</title>
   <meta name="description" content="These are notes gathering my experience in data science with R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 8 Conditions | Learning Data Science in R" />
+  <meta property="og:title" content="Learning Data Science in R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Conditions | Learning Data Science in R" />
+  <meta name="twitter:title" content="Learning Data Science in R" />
   
   <meta name="twitter:description" content="These are notes gathering my experience in data science with R." />
   
@@ -35,7 +35,6 @@
 <link rel="next" href="conclusion.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -136,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="getset.html"><a href="getset.html#sign-for-github"><i class="fa fa-check"></i><b>1.2</b> Sign for GitHub</a></li>
 <li class="chapter" data-level="1.3" data-path="getset.html"><a href="getset.html#create-your-project"><i class="fa fa-check"></i><b>1.3</b> Create your project</a></li>
 <li class="chapter" data-level="1.4" data-path="getset.html"><a href="getset.html#create-github-repo-and-link-your-machine-to-it"><i class="fa fa-check"></i><b>1.4</b> Create GitHub repo and link your machine to it</a></li>
+<li class="chapter" data-level="1.5" data-path="getset.html"><a href="getset.html#collaboration-on-github"><i class="fa fa-check"></i><b>1.5</b> Collaboration on GitHub</a></li>
 </ul></li>
 <li class="part"><span><b>II Source file and output files</b></span></li>
 <li class="chapter" data-level="2" data-path="rmd.html"><a href="rmd.html"><i class="fa fa-check"></i><b>2</b> Rmd files</a><ul>
@@ -207,80 +207,80 @@ In R, it builds on statements such as <code>if</code> and <code>else</code>.</p>
 <h2><span class="header-section-number">8.1</span> <code>if</code> statement</h2>
 <p>The simplest form for a condition uses a <code>if</code> statement.<br />
 The form is then:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (condition) {
-<span class="co"># code to be executed if the condition is met</span>
-}</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="cf">if</span> (condition) {</a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="co"># code to be executed if the condition is met</span></a>
+<a class="sourceLine" id="cb48-3" title="3">}</a></code></pre></div>
 <p>The key point is that R will run the code until it finds a condition that is met. If it doesn’t find any, it continues to the next lines of code.<br />
 Here is an example.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gains &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)
-<span class="kw">sum</span>(gains)
-<span class="co">#&gt; [1] 20</span>
-<span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {
-  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)
-}
-<span class="co">#&gt; [1] &quot;Congratulations, you are winning!&quot;</span>
-
-gains[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">-10</span> <span class="co"># change the first element of gains</span>
-<span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {
-  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)
-} <span class="co"># notice that there is no output, because the condition was not met</span></code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">gains &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="kw">sum</span>(gains)</a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="co">#&gt; [1] 20</span></a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb49-5" title="5">  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)</a>
+<a class="sourceLine" id="cb49-6" title="6">}</a>
+<a class="sourceLine" id="cb49-7" title="7"><span class="co">#&gt; [1] &quot;Congratulations, you are winning!&quot;</span></a>
+<a class="sourceLine" id="cb49-8" title="8"></a>
+<a class="sourceLine" id="cb49-9" title="9">gains[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">-10</span> <span class="co"># change the first element of gains</span></a>
+<a class="sourceLine" id="cb49-10" title="10"><span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb49-11" title="11">  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)</a>
+<a class="sourceLine" id="cb49-12" title="12">} <span class="co"># notice that there is no output, because the condition was not met</span></a></code></pre></div>
 </div>
 <div id="else-statement" class="section level2">
 <h2><span class="header-section-number">8.2</span> <code>else</code> statement</h2>
 <p>What happens when the condition is not met? It’s on the user to decide. It can be nothing or… something else!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (condition) { 
-<span class="co"># code to be executed if the condition is met</span>
-} <span class="cf">else</span> {
-<span class="co"># code to be executed if the condition is NOT met</span>
-}</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="cf">if</span> (condition) { </a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="co"># code to be executed if the condition is met</span></a>
+<a class="sourceLine" id="cb50-3" title="3">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb50-4" title="4"><span class="co"># code to be executed if the condition is NOT met</span></a>
+<a class="sourceLine" id="cb50-5" title="5">}</a></code></pre></div>
 <p>Here is an example.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gains&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)
-gains[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">-10</span> <span class="co"># change the first element of gains</span>
-<span class="kw">sum</span>(gains)
-<span class="co">#&gt; [1] 0</span>
-<span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {
-  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)
-} <span class="cf">else</span> {
-  <span class="kw">print</span>(<span class="st">&quot;You are not winning!&quot;</span>)
-} <span class="co"># notice that now there is an output!</span>
-<span class="co">#&gt; [1] &quot;You are not winning!&quot;</span></code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">gains&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb51-2" title="2">gains[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">-10</span> <span class="co"># change the first element of gains</span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="kw">sum</span>(gains)</a>
+<a class="sourceLine" id="cb51-4" title="4"><span class="co">#&gt; [1] 0</span></a>
+<a class="sourceLine" id="cb51-5" title="5"><span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb51-6" title="6">  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)</a>
+<a class="sourceLine" id="cb51-7" title="7">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb51-8" title="8">  <span class="kw">print</span>(<span class="st">&quot;You are not winning!&quot;</span>)</a>
+<a class="sourceLine" id="cb51-9" title="9">} <span class="co"># notice that now there is an output!</span></a>
+<a class="sourceLine" id="cb51-10" title="10"><span class="co">#&gt; [1] &quot;You are not winning!&quot;</span></a></code></pre></div>
 </div>
 <div id="else-if-statement" class="section level2">
 <h2><span class="header-section-number">8.3</span> <code>else if</code> statement</h2>
 <p><code>else if</code> allows us to introduce another condition to our flow of code</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (condition_<span class="dv">1</span>) { 
-<span class="co"># code to be executed if the condition_1 is met</span>
-} <span class="cf">else</span> <span class="cf">if</span> (condition_<span class="dv">2</span>) {
-<span class="co"># code to be executed if the condition_2 is met</span>
-} <span class="cf">else</span> {
-<span class="co"># code to be executed if NEITHER condition_1 NOR condition_2 is met</span>
-}</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="cf">if</span> (condition_<span class="dv">1</span>) { </a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="co"># code to be executed if the condition_1 is met</span></a>
+<a class="sourceLine" id="cb52-3" title="3">} <span class="cf">else</span> <span class="cf">if</span> (condition_<span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb52-4" title="4"><span class="co"># code to be executed if the condition_2 is met</span></a>
+<a class="sourceLine" id="cb52-5" title="5">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb52-6" title="6"><span class="co"># code to be executed if NEITHER condition_1 NOR condition_2 is met</span></a>
+<a class="sourceLine" id="cb52-7" title="7">}</a></code></pre></div>
 <p>We can use as many <code>else if</code> statements as we want.<br />
 Here is an example with only one <code>else if</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">gains&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)
-gains[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">-10</span> <span class="co"># change the first element of gains</span>
-<span class="kw">sum</span>(gains)
-<span class="co">#&gt; [1] 0</span>
-<span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {
-  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)
-} <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">sum</span>(gains)<span class="op">==</span><span class="dv">0</span>) {
-  <span class="kw">print</span>(<span class="st">&quot;You just break even!&quot;</span>)
-} <span class="cf">else</span> {
-  <span class="kw">print</span>(<span class="st">&quot;You are losing!&quot;</span>)
-}
-<span class="co">#&gt; [1] &quot;You just break even!&quot;</span></code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">gains&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb53-2" title="2">gains[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">-10</span> <span class="co"># change the first element of gains</span></a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="kw">sum</span>(gains)</a>
+<a class="sourceLine" id="cb53-4" title="4"><span class="co">#&gt; [1] 0</span></a>
+<a class="sourceLine" id="cb53-5" title="5"><span class="cf">if</span> (<span class="kw">sum</span>(gains) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb53-6" title="6">  <span class="kw">print</span>(<span class="st">&quot;Congratulations, you are winning!&quot;</span>)</a>
+<a class="sourceLine" id="cb53-7" title="7">} <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">sum</span>(gains)<span class="op">==</span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb53-8" title="8">  <span class="kw">print</span>(<span class="st">&quot;You just break even!&quot;</span>)</a>
+<a class="sourceLine" id="cb53-9" title="9">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb53-10" title="10">  <span class="kw">print</span>(<span class="st">&quot;You are losing!&quot;</span>)</a>
+<a class="sourceLine" id="cb53-11" title="11">}</a>
+<a class="sourceLine" id="cb53-12" title="12"><span class="co">#&gt; [1] &quot;You just break even!&quot;</span></a></code></pre></div>
 <p>Notice the potential problem of not putting a <code>else</code> statement at the end of the conditions system.</p>
 </div>
 <div id="ifelse-statement" class="section level2">
 <h2><span class="header-section-number">8.4</span> <code>ifelse</code> statement</h2>
 <p>For <strong>short</strong> conditions, we can use <code>ifelse</code>.<br />
 The form is</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ifelse</span>(condition, value <span class="cf">if</span> condition met, value <span class="cf">if</span> value not met)</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">ifelse</span>(condition, value <span class="cf">if</span> condition met, value <span class="cf">if</span> value not met)</a></code></pre></div>
 <p>Here is an example.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gains &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)
-sign &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">sum</span>(gains)<span class="op">&gt;=</span><span class="dv">0</span>,<span class="st">&quot;+&quot;</span>,<span class="st">&quot;-&quot;</span>)
-sign
-<span class="co">#&gt; [1] &quot;+&quot;</span></code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">gains &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb55-2" title="2">sign &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">sum</span>(gains)<span class="op">&gt;=</span><span class="dv">0</span>,<span class="st">&quot;+&quot;</span>,<span class="st">&quot;-&quot;</span>)</a>
+<a class="sourceLine" id="cb55-3" title="3">sign</a>
+<a class="sourceLine" id="cb55-4" title="4"><span class="co">#&gt; [1] &quot;+&quot;</span></a></code></pre></div>
 </div>
 <div id="logical-operators-and" class="section level2">
 <h2><span class="header-section-number">8.5</span> Logical operators: <code>&amp;</code>, <code>|</code> and <code>!</code></h2>
@@ -289,20 +289,20 @@ sign
 - <code>|</code> means OR
 - <code>!</code> means NOT</p>
 <p>De Morgan’s laws may help here.</p>
-<pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">10</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span><span class="dv">27</span><span class="op">%%</span><span class="dv">3</span><span class="op">==</span><span class="dv">0</span>) <span class="co"># equivalent to (TRUE and TRUE), hence TRUE</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">FALSE</span>
-<span class="co">#&gt; [1] FALSE</span>
-<span class="op">!</span><span class="ot">TRUE</span> 
-<span class="co">#&gt; [1] FALSE</span>
-<span class="op">!</span>(<span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">TRUE</span>)
-<span class="co">#&gt; [1] FALSE</span>
-<span class="op">!</span>(<span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="ot">TRUE</span>)
-<span class="co">#&gt; [1] TRUE</span>
-((<span class="dv">10</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span><span class="dv">27</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>)) <span class="co"># equivalent to (TRUE and FALSE), hence FALSE</span>
-<span class="co">#&gt; [1] FALSE</span>
-((<span class="dv">10</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="dv">27</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>)) <span class="co"># equivalent to (TRUE or FALSE), hence TRUE</span>
-<span class="co">#&gt; [1] TRUE</span></code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">(<span class="dv">10</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span><span class="dv">27</span><span class="op">%%</span><span class="dv">3</span><span class="op">==</span><span class="dv">0</span>) <span class="co"># equivalent to (TRUE and TRUE), hence TRUE</span></a>
+<a class="sourceLine" id="cb56-2" title="2"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb56-3" title="3"><span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb56-4" title="4"><span class="co">#&gt; [1] FALSE</span></a>
+<a class="sourceLine" id="cb56-5" title="5"><span class="op">!</span><span class="ot">TRUE</span> </a>
+<a class="sourceLine" id="cb56-6" title="6"><span class="co">#&gt; [1] FALSE</span></a>
+<a class="sourceLine" id="cb56-7" title="7"><span class="op">!</span>(<span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb56-8" title="8"><span class="co">#&gt; [1] FALSE</span></a>
+<a class="sourceLine" id="cb56-9" title="9"><span class="op">!</span>(<span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb56-10" title="10"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb56-11" title="11">((<span class="dv">10</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span><span class="dv">27</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>)) <span class="co"># equivalent to (TRUE and FALSE), hence FALSE</span></a>
+<a class="sourceLine" id="cb56-12" title="12"><span class="co">#&gt; [1] FALSE</span></a>
+<a class="sourceLine" id="cb56-13" title="13">((<span class="dv">10</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="dv">27</span><span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>)) <span class="co"># equivalent to (TRUE or FALSE), hence TRUE</span></a>
+<a class="sourceLine" id="cb56-14" title="14"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 </div>
 <div id="writing-and-interpreting-a-condition" class="section level2">
 <h2><span class="header-section-number">8.6</span> Writing and interpreting a condition</h2>
@@ -311,21 +311,21 @@ If it encounters a TRUE, it executes the commands, otherwise, it doesn’t.<br /
 Remember there are many ways to obtain one of these two logicals.<br />
 Any of these ways will work as a condition.<br />
 Here are examples of less trivial ways of writing a condition</p>
-<pre class="sourceCode r"><code class="sourceCode r">gains&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)
-
-<span class="cf">if</span> (<span class="kw">is.numeric</span>(gains)) {
-  <span class="kw">print</span>(<span class="st">&quot;Seems like it is a numeric vector...&quot;</span>)
-}
-<span class="co">#&gt; [1] &quot;Seems like it is a numeric vector...&quot;</span>
-<span class="co"># here, is.numeric(gains) evaluates to TRUE, hence, the code is executed!</span>
-<span class="co"># the beginner&#39;s way would be to replace the condition by</span>
-<span class="co"># if (class(gains)==&quot;numeric&quot;)</span>
-
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">is.factor</span>(gains)) {
-  <span class="kw">print</span>(<span class="st">&quot;Yeah! We avoided the factor...&quot;</span>)
-}
-<span class="co">#&gt; [1] &quot;Yeah! We avoided the factor...&quot;</span>
-<span class="co"># the beginner would write if (class(gains)!=&quot;factor&quot;)</span></code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">gains&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb57-2" title="2"></a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="cf">if</span> (<span class="kw">is.numeric</span>(gains)) {</a>
+<a class="sourceLine" id="cb57-4" title="4">  <span class="kw">print</span>(<span class="st">&quot;Seems like it is a numeric vector...&quot;</span>)</a>
+<a class="sourceLine" id="cb57-5" title="5">}</a>
+<a class="sourceLine" id="cb57-6" title="6"><span class="co">#&gt; [1] &quot;Seems like it is a numeric vector...&quot;</span></a>
+<a class="sourceLine" id="cb57-7" title="7"><span class="co"># here, is.numeric(gains) evaluates to TRUE, hence, the code is executed!</span></a>
+<a class="sourceLine" id="cb57-8" title="8"><span class="co"># the beginner&#39;s way would be to replace the condition by</span></a>
+<a class="sourceLine" id="cb57-9" title="9"><span class="co"># if (class(gains)==&quot;numeric&quot;)</span></a>
+<a class="sourceLine" id="cb57-10" title="10"></a>
+<a class="sourceLine" id="cb57-11" title="11"><span class="cf">if</span> (<span class="op">!</span><span class="kw">is.factor</span>(gains)) {</a>
+<a class="sourceLine" id="cb57-12" title="12">  <span class="kw">print</span>(<span class="st">&quot;Yeah! We avoided the factor...&quot;</span>)</a>
+<a class="sourceLine" id="cb57-13" title="13">}</a>
+<a class="sourceLine" id="cb57-14" title="14"><span class="co">#&gt; [1] &quot;Yeah! We avoided the factor...&quot;</span></a>
+<a class="sourceLine" id="cb57-15" title="15"><span class="co"># the beginner would write if (class(gains)!=&quot;factor&quot;)</span></a></code></pre></div>
 
 </div>
 </div>
@@ -355,7 +355,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapaper": false,
+"instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -365,10 +365,6 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
-},
-"history": {
 "link": null,
 "text": null
 },
@@ -387,7 +383,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 5 Data stuctures | Learning Data Science in R</title>
+  <title>Learning Data Science in R</title>
   <meta name="description" content="These are notes gathering my experience in data science with R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 5 Data stuctures | Learning Data Science in R" />
+  <meta property="og:title" content="Learning Data Science in R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Data stuctures | Learning Data Science in R" />
+  <meta name="twitter:title" content="Learning Data Science in R" />
   
   <meta name="twitter:description" content="These are notes gathering my experience in data science with R." />
   
@@ -35,7 +35,6 @@
 <link rel="next" href="simple-functions-on-vectors.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -136,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="getset.html"><a href="getset.html#sign-for-github"><i class="fa fa-check"></i><b>1.2</b> Sign for GitHub</a></li>
 <li class="chapter" data-level="1.3" data-path="getset.html"><a href="getset.html#create-your-project"><i class="fa fa-check"></i><b>1.3</b> Create your project</a></li>
 <li class="chapter" data-level="1.4" data-path="getset.html"><a href="getset.html#create-github-repo-and-link-your-machine-to-it"><i class="fa fa-check"></i><b>1.4</b> Create GitHub repo and link your machine to it</a></li>
+<li class="chapter" data-level="1.5" data-path="getset.html"><a href="getset.html#collaboration-on-github"><i class="fa fa-check"></i><b>1.5</b> Collaboration on GitHub</a></li>
 </ul></li>
 <li class="part"><span><b>II Source file and output files</b></span></li>
 <li class="chapter" data-level="2" data-path="rmd.html"><a href="rmd.html"><i class="fa fa-check"></i><b>2</b> Rmd files</a><ul>
@@ -222,216 +222,216 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note that if vector elements not all of the same type, R makes coercion. In that case, the order becomes:
 “logical &lt; numeric &lt; character”.</p>
 <p>Here are a few illustrations.</p>
-<pre class="sourceCode r"><code class="sourceCode r">trop1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>)
-trop1
-<span class="co">#&gt; [1] 24 23 23 24 24</span>
-
-trop2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mi&quot;</span>, <span class="st">&quot;ga&quot;</span>, <span class="st">&quot;tr&quot;</span>, <span class="st">&quot;ba&quot;</span>, <span class="st">&quot;ha&quot;</span>)
-trop2
-<span class="co">#&gt; [1] &quot;mi&quot; &quot;ga&quot; &quot;tr&quot; &quot;ba&quot; &quot;ha&quot;</span>
-
-trop3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">24</span>, <span class="st">&quot;trierweiler&quot;</span>)
-trop3
-<span class="co">#&gt; [1] &quot;24&quot;          &quot;24&quot;          &quot;trierweiler&quot;</span>
-<span class="kw">typeof</span>(trop3)
-<span class="co">#&gt; [1] &quot;character&quot;</span>
-
-var &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>)
-var
-<span class="co">#&gt; [1] 2</span>
-
-tar &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2&quot;</span>)
-tar
-<span class="co">#&gt; [1] &quot;2&quot;</span>
-
-var <span class="op">+</span><span class="st"> </span><span class="dv">30</span>
-<span class="co">#&gt; [1] 32</span>
-<span class="co">#tar + 30</span></code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">log_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)
-
-int_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="st">&quot;tre&quot;</span>)
-<span class="kw">typeof</span>(int_vector)
-<span class="co">#&gt; [1] &quot;character&quot;</span>
-int_vector &lt;-<span class="st"> </span><span class="kw">c</span>(12L, 10L, 3L)
-<span class="kw">typeof</span>(int_vector)
-<span class="co">#&gt; [1] &quot;integer&quot;</span>
-
-num_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">3</span>)
-<span class="kw">typeof</span>(num_vector)
-<span class="co">#&gt; [1] &quot;double&quot;</span>
-chr_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)
-<span class="kw">typeof</span>(chr_vector)
-<span class="co">#&gt; [1] &quot;character&quot;</span>
-<span class="kw">is.numeric</span>(num_vector)
-<span class="co">#&gt; [1] TRUE</span>
-
-no_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="st">&quot;a&quot;</span>)
-<span class="kw">is.numeric</span>(no_vector)
-<span class="co">#&gt; [1] FALSE</span>
-<span class="kw">typeof</span>(no_vector)
-<span class="co">#&gt; [1] &quot;character&quot;</span></code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">vector_A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
-vector_A
-<span class="co">#&gt; [1] 1 2 3 4 5</span>
-<span class="kw">length</span>(vector_A)
-<span class="co">#&gt; [1] 5</span></code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">trop1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>)</a>
+<a class="sourceLine" id="cb23-2" title="2">trop1</a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="co">#&gt; [1] 24 23 23 24 24</span></a>
+<a class="sourceLine" id="cb23-4" title="4"></a>
+<a class="sourceLine" id="cb23-5" title="5">trop2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mi&quot;</span>, <span class="st">&quot;ga&quot;</span>, <span class="st">&quot;tr&quot;</span>, <span class="st">&quot;ba&quot;</span>, <span class="st">&quot;ha&quot;</span>)</a>
+<a class="sourceLine" id="cb23-6" title="6">trop2</a>
+<a class="sourceLine" id="cb23-7" title="7"><span class="co">#&gt; [1] &quot;mi&quot; &quot;ga&quot; &quot;tr&quot; &quot;ba&quot; &quot;ha&quot;</span></a>
+<a class="sourceLine" id="cb23-8" title="8"></a>
+<a class="sourceLine" id="cb23-9" title="9">trop3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">24</span>, <span class="st">&quot;trierweiler&quot;</span>)</a>
+<a class="sourceLine" id="cb23-10" title="10">trop3</a>
+<a class="sourceLine" id="cb23-11" title="11"><span class="co">#&gt; [1] &quot;24&quot;          &quot;24&quot;          &quot;trierweiler&quot;</span></a>
+<a class="sourceLine" id="cb23-12" title="12"><span class="kw">typeof</span>(trop3)</a>
+<a class="sourceLine" id="cb23-13" title="13"><span class="co">#&gt; [1] &quot;character&quot;</span></a>
+<a class="sourceLine" id="cb23-14" title="14"></a>
+<a class="sourceLine" id="cb23-15" title="15">var &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb23-16" title="16">var</a>
+<a class="sourceLine" id="cb23-17" title="17"><span class="co">#&gt; [1] 2</span></a>
+<a class="sourceLine" id="cb23-18" title="18"></a>
+<a class="sourceLine" id="cb23-19" title="19">tar &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2&quot;</span>)</a>
+<a class="sourceLine" id="cb23-20" title="20">tar</a>
+<a class="sourceLine" id="cb23-21" title="21"><span class="co">#&gt; [1] &quot;2&quot;</span></a>
+<a class="sourceLine" id="cb23-22" title="22"></a>
+<a class="sourceLine" id="cb23-23" title="23">var <span class="op">+</span><span class="st"> </span><span class="dv">30</span></a>
+<a class="sourceLine" id="cb23-24" title="24"><span class="co">#&gt; [1] 32</span></a>
+<a class="sourceLine" id="cb23-25" title="25"><span class="co">#tar + 30</span></a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">log_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb24-2" title="2"></a>
+<a class="sourceLine" id="cb24-3" title="3">int_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="st">&quot;tre&quot;</span>)</a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="kw">typeof</span>(int_vector)</a>
+<a class="sourceLine" id="cb24-5" title="5"><span class="co">#&gt; [1] &quot;character&quot;</span></a>
+<a class="sourceLine" id="cb24-6" title="6">int_vector &lt;-<span class="st"> </span><span class="kw">c</span>(12L, 10L, 3L)</a>
+<a class="sourceLine" id="cb24-7" title="7"><span class="kw">typeof</span>(int_vector)</a>
+<a class="sourceLine" id="cb24-8" title="8"><span class="co">#&gt; [1] &quot;integer&quot;</span></a>
+<a class="sourceLine" id="cb24-9" title="9"></a>
+<a class="sourceLine" id="cb24-10" title="10">num_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb24-11" title="11"><span class="kw">typeof</span>(num_vector)</a>
+<a class="sourceLine" id="cb24-12" title="12"><span class="co">#&gt; [1] &quot;double&quot;</span></a>
+<a class="sourceLine" id="cb24-13" title="13">chr_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)</a>
+<a class="sourceLine" id="cb24-14" title="14"><span class="kw">typeof</span>(chr_vector)</a>
+<a class="sourceLine" id="cb24-15" title="15"><span class="co">#&gt; [1] &quot;character&quot;</span></a>
+<a class="sourceLine" id="cb24-16" title="16"><span class="kw">is.numeric</span>(num_vector)</a>
+<a class="sourceLine" id="cb24-17" title="17"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb24-18" title="18"></a>
+<a class="sourceLine" id="cb24-19" title="19">no_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="st">&quot;a&quot;</span>)</a>
+<a class="sourceLine" id="cb24-20" title="20"><span class="kw">is.numeric</span>(no_vector)</a>
+<a class="sourceLine" id="cb24-21" title="21"><span class="co">#&gt; [1] FALSE</span></a>
+<a class="sourceLine" id="cb24-22" title="22"><span class="kw">typeof</span>(no_vector)</a>
+<a class="sourceLine" id="cb24-23" title="23"><span class="co">#&gt; [1] &quot;character&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">vector_A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb25-2" title="2">vector_A</a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="co">#&gt; [1] 1 2 3 4 5</span></a>
+<a class="sourceLine" id="cb25-4" title="4"><span class="kw">length</span>(vector_A)</a>
+<a class="sourceLine" id="cb25-5" title="5"><span class="co">#&gt; [1] 5</span></a></code></pre></div>
 </div>
 <div id="factor-vector" class="section level3">
 <h3><span class="header-section-number">5.1.2</span> Factor vector</h3>
 <p>This is a special type of vector. It has a limited number of values, called levels. These levels can be unordered (e.g., gender is either “Female” or “Male”) or ordered (e.g. school level is “Primary”, “Secondary”, “Tertiary”)</p>
-<pre class="sourceCode r"><code class="sourceCode r">gender &lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))
-gender
-<span class="co">#&gt; [1] Male   Male   Female Male   Female Female Male  </span>
-<span class="co">#&gt; Levels: Female Male</span>
-<span class="kw">levels</span>(gender)
-<span class="co">#&gt; [1] &quot;Female&quot; &quot;Male&quot;</span>
-<span class="kw">summary</span>(gender)
-<span class="co">#&gt; Female   Male </span>
-<span class="co">#&gt;      3      4</span>
-school&lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Primary&quot;</span>, <span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>), <span class="dt">ordered=</span><span class="ot">TRUE</span>)
-school
-<span class="co">#&gt; [1] Primary   Secondary Tertiary </span>
-<span class="co">#&gt; Levels: Primary &lt; Secondary &lt; Tertiary</span>
-
-school2&lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Primary&quot;</span>, <span class="st">&quot;Secondary&quot;</span>,<span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>), <span class="dt">labels=</span><span class="kw">c</span>( <span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>,<span class="st">&quot;Primary&quot;</span>), <span class="dt">ordered=</span><span class="ot">TRUE</span>)
-school2
-<span class="co">#&gt; [1] Secondary Tertiary  Tertiary  Primary  </span>
-<span class="co">#&gt; Levels: Secondary &lt; Tertiary &lt; Primary</span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">gender &lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))</a>
+<a class="sourceLine" id="cb26-2" title="2">gender</a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="co">#&gt; [1] Male   Male   Female Male   Female Female Male  </span></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="co">#&gt; Levels: Female Male</span></a>
+<a class="sourceLine" id="cb26-5" title="5"><span class="kw">levels</span>(gender)</a>
+<a class="sourceLine" id="cb26-6" title="6"><span class="co">#&gt; [1] &quot;Female&quot; &quot;Male&quot;</span></a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="kw">summary</span>(gender)</a>
+<a class="sourceLine" id="cb26-8" title="8"><span class="co">#&gt; Female   Male </span></a>
+<a class="sourceLine" id="cb26-9" title="9"><span class="co">#&gt;      3      4</span></a>
+<a class="sourceLine" id="cb26-10" title="10">school&lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Primary&quot;</span>, <span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>), <span class="dt">ordered=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb26-11" title="11">school</a>
+<a class="sourceLine" id="cb26-12" title="12"><span class="co">#&gt; [1] Primary   Secondary Tertiary </span></a>
+<a class="sourceLine" id="cb26-13" title="13"><span class="co">#&gt; Levels: Primary &lt; Secondary &lt; Tertiary</span></a>
+<a class="sourceLine" id="cb26-14" title="14"></a>
+<a class="sourceLine" id="cb26-15" title="15">school2&lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Primary&quot;</span>, <span class="st">&quot;Secondary&quot;</span>,<span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>), <span class="dt">labels=</span><span class="kw">c</span>( <span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>,<span class="st">&quot;Primary&quot;</span>), <span class="dt">ordered=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb26-16" title="16">school2</a>
+<a class="sourceLine" id="cb26-17" title="17"><span class="co">#&gt; [1] Secondary Tertiary  Tertiary  Primary  </span></a>
+<a class="sourceLine" id="cb26-18" title="18"><span class="co">#&gt; Levels: Secondary &lt; Tertiary &lt; Primary</span></a></code></pre></div>
 </div>
 </div>
 <div id="matrices-and-arrays" class="section level2">
 <h2><span class="header-section-number">5.2</span> Matrices and arrays</h2>
 <p>My experience is that R is not often used for matrices calculations: it is too slow for that, that are better programs for that out there (e.g. Matlab).</p>
-<pre class="sourceCode r"><code class="sourceCode r">M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">8</span>), <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">2</span>) 
-M
-<span class="co">#&gt;      [,1] [,2]</span>
-<span class="co">#&gt; [1,]    4    3</span>
-<span class="co">#&gt; [2,]    1    6</span>
-<span class="co">#&gt; [3,]    0    8</span></code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">8</span>), <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">2</span>) </a>
+<a class="sourceLine" id="cb27-2" title="2">M</a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="co">#&gt;      [,1] [,2]</span></a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="co">#&gt; [1,]    4    3</span></a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="co">#&gt; [2,]    1    6</span></a>
+<a class="sourceLine" id="cb27-6" title="6"><span class="co">#&gt; [3,]    0    8</span></a></code></pre></div>
 <p>If we think of a matrix as a 2 dimensions vector, then arrays are <span class="math inline">\(n\)</span> dimensions vectors. Is it important? Probably in some cases, not so much for us.</p>
-<pre class="sourceCode r"><code class="sourceCode r">mya&lt;-<span class="kw">array</span>(<span class="dt">data=</span><span class="dv">1</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>))
-mya
-<span class="co">#&gt; , , 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;      [,1] [,2] [,3]</span>
-<span class="co">#&gt; [1,]    1    3    5</span>
-<span class="co">#&gt; [2,]    2    4    6</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; , , 2</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;      [,1] [,2] [,3]</span>
-<span class="co">#&gt; [1,]    7    9   11</span>
-<span class="co">#&gt; [2,]    8   10   12</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; , , 3</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;      [,1] [,2] [,3]</span>
-<span class="co">#&gt; [1,]   13   15   17</span>
-<span class="co">#&gt; [2,]   14   16   18</span></code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">mya&lt;-<span class="kw">array</span>(<span class="dt">data=</span><span class="dv">1</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb28-2" title="2">mya</a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="co">#&gt; , , 1</span></a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb28-5" title="5"><span class="co">#&gt;      [,1] [,2] [,3]</span></a>
+<a class="sourceLine" id="cb28-6" title="6"><span class="co">#&gt; [1,]    1    3    5</span></a>
+<a class="sourceLine" id="cb28-7" title="7"><span class="co">#&gt; [2,]    2    4    6</span></a>
+<a class="sourceLine" id="cb28-8" title="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb28-9" title="9"><span class="co">#&gt; , , 2</span></a>
+<a class="sourceLine" id="cb28-10" title="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb28-11" title="11"><span class="co">#&gt;      [,1] [,2] [,3]</span></a>
+<a class="sourceLine" id="cb28-12" title="12"><span class="co">#&gt; [1,]    7    9   11</span></a>
+<a class="sourceLine" id="cb28-13" title="13"><span class="co">#&gt; [2,]    8   10   12</span></a>
+<a class="sourceLine" id="cb28-14" title="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb28-15" title="15"><span class="co">#&gt; , , 3</span></a>
+<a class="sourceLine" id="cb28-16" title="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb28-17" title="17"><span class="co">#&gt;      [,1] [,2] [,3]</span></a>
+<a class="sourceLine" id="cb28-18" title="18"><span class="co">#&gt; [1,]   13   15   17</span></a>
+<a class="sourceLine" id="cb28-19" title="19"><span class="co">#&gt; [2,]   14   16   18</span></a></code></pre></div>
 </div>
 <div id="lists" class="section level2">
 <h2><span class="header-section-number">5.3</span> Lists</h2>
 <p>These are the one-size fit all structure… A list is an object composed of any other object, even… another list! Very useful data structure!</p>
-<pre class="sourceCode r"><code class="sourceCode r">school&lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Primary&quot;</span>, <span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>), <span class="dt">ordered=</span><span class="ot">TRUE</span>)
-mylist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">numbers=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">60</span>), <span class="dt">somenames=</span><span class="kw">c</span>(<span class="st">&quot;Jim&quot;</span>,<span class="st">&quot;Jules&quot;</span>), <span class="dt">results=</span> <span class="kw">c</span>(T,F,F,T), <span class="dt">school=</span>school)
-mylist
-<span class="co">#&gt; $numbers</span>
-<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</span>
-<span class="co">#&gt; [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46</span>
-<span class="co">#&gt; [47] 47 48 49 50 51 52 53 54 55 56 57 58 59 60</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $somenames</span>
-<span class="co">#&gt; [1] &quot;Jim&quot;   &quot;Jules&quot;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $results</span>
-<span class="co">#&gt; [1]  TRUE FALSE FALSE  TRUE</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $school</span>
-<span class="co">#&gt; [1] Primary   Secondary Tertiary </span>
-<span class="co">#&gt; Levels: Primary &lt; Secondary &lt; Tertiary</span>
-<span class="kw">names</span>(mylist) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;O&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;S&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">school&lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Primary&quot;</span>, <span class="st">&quot;Secondary&quot;</span>, <span class="st">&quot;Tertiary&quot;</span>), <span class="dt">ordered=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb29-2" title="2">mylist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">numbers=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">60</span>), <span class="dt">somenames=</span><span class="kw">c</span>(<span class="st">&quot;Jim&quot;</span>,<span class="st">&quot;Jules&quot;</span>), <span class="dt">results=</span> <span class="kw">c</span>(T,F,F,T), <span class="dt">school=</span>school)</a>
+<a class="sourceLine" id="cb29-3" title="3">mylist</a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="co">#&gt; $numbers</span></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="co">#&gt; [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46</span></a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="co">#&gt; [47] 47 48 49 50 51 52 53 54 55 56 57 58 59 60</span></a>
+<a class="sourceLine" id="cb29-8" title="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb29-9" title="9"><span class="co">#&gt; $somenames</span></a>
+<a class="sourceLine" id="cb29-10" title="10"><span class="co">#&gt; [1] &quot;Jim&quot;   &quot;Jules&quot;</span></a>
+<a class="sourceLine" id="cb29-11" title="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb29-12" title="12"><span class="co">#&gt; $results</span></a>
+<a class="sourceLine" id="cb29-13" title="13"><span class="co">#&gt; [1]  TRUE FALSE FALSE  TRUE</span></a>
+<a class="sourceLine" id="cb29-14" title="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="co">#&gt; $school</span></a>
+<a class="sourceLine" id="cb29-16" title="16"><span class="co">#&gt; [1] Primary   Secondary Tertiary </span></a>
+<a class="sourceLine" id="cb29-17" title="17"><span class="co">#&gt; Levels: Primary &lt; Secondary &lt; Tertiary</span></a>
+<a class="sourceLine" id="cb29-18" title="18"><span class="kw">names</span>(mylist) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;O&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;S&quot;</span>)</a></code></pre></div>
 </div>
 <div id="data-frames" class="section level2">
 <h2><span class="header-section-number">5.4</span> Data frames</h2>
 <p>The second most important data structure in R. You can think of it as a better version of a data set in Excel. It stacks together observations over many variables, each of these variables being a vector.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(mtcars)
-<span class="kw">class</span>(mtcars)
-<span class="co">#&gt; [1] &quot;data.frame&quot;</span>
-mtcars
-<span class="co">#&gt;                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
-<span class="co">#&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
-<span class="co">#&gt; Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
-<span class="co">#&gt; Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span>
-<span class="co">#&gt; Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span>
-<span class="co">#&gt; Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span>
-<span class="co">#&gt; Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span>
-<span class="co">#&gt; Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span>
-<span class="co">#&gt; Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
-<span class="co">#&gt; Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
-<span class="co">#&gt; Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span>
-<span class="co">#&gt; Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4</span>
-<span class="co">#&gt; Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3</span>
-<span class="co">#&gt; Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3</span>
-<span class="co">#&gt; Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</span>
-<span class="co">#&gt; Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4</span>
-<span class="co">#&gt; Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</span>
-<span class="co">#&gt; Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4</span>
-<span class="co">#&gt; Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span>
-<span class="co">#&gt; Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span>
-<span class="co">#&gt; Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span>
-<span class="co">#&gt; Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span>
-<span class="co">#&gt; Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2</span>
-<span class="co">#&gt; AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2</span>
-<span class="co">#&gt; Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4</span>
-<span class="co">#&gt; Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2</span>
-<span class="co">#&gt; Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span>
-<span class="co">#&gt; Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span>
-<span class="co">#&gt; Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span>
-<span class="co">#&gt; Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</span>
-<span class="co">#&gt; Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</span>
-<span class="co">#&gt; Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span>
-<span class="co">#&gt; Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span>
-<span class="kw">head</span>(mtcars)
-<span class="co">#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span>
-<span class="co">#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span>
-<span class="co">#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span>
-<span class="co">#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span>
-<span class="co">#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span>
-<span class="co">#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span>
-<span class="co">#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span>
-<span class="kw">str</span>(mtcars)
-<span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span>
-<span class="co">#&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...</span>
-<span class="co">#&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...</span>
-<span class="co">#&gt;  $ disp: num  160 160 108 258 360 ...</span>
-<span class="co">#&gt;  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...</span>
-<span class="co">#&gt;  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...</span>
-<span class="co">#&gt;  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...</span>
-<span class="co">#&gt;  $ qsec: num  16.5 17 18.6 19.4 17 ...</span>
-<span class="co">#&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...</span>
-<span class="co">#&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...</span>
-<span class="co">#&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...</span>
-<span class="co">#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</span>
-<span class="kw">names</span>(mtcars) <span class="co"># names of the variables in the data frame</span>
-<span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;</span>
-<span class="co">#&gt; [11] &quot;carb&quot;</span>
-
-<span class="kw">length</span>(mtcars)
-<span class="co">#&gt; [1] 11</span>
-
-<span class="kw">str</span>(mtcars)
-<span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span>
-<span class="co">#&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...</span>
-<span class="co">#&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...</span>
-<span class="co">#&gt;  $ disp: num  160 160 108 258 360 ...</span>
-<span class="co">#&gt;  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...</span>
-<span class="co">#&gt;  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...</span>
-<span class="co">#&gt;  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...</span>
-<span class="co">#&gt;  $ qsec: num  16.5 17 18.6 19.4 17 ...</span>
-<span class="co">#&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...</span>
-<span class="co">#&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...</span>
-<span class="co">#&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...</span>
-<span class="co">#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</span></code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">data</span>(mtcars)</a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">class</span>(mtcars)</a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="co">#&gt; [1] &quot;data.frame&quot;</span></a>
+<a class="sourceLine" id="cb30-4" title="4">mtcars</a>
+<a class="sourceLine" id="cb30-5" title="5"><span class="co">#&gt;                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="co">#&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></a>
+<a class="sourceLine" id="cb30-7" title="7"><span class="co">#&gt; Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></a>
+<a class="sourceLine" id="cb30-8" title="8"><span class="co">#&gt; Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span></a>
+<a class="sourceLine" id="cb30-9" title="9"><span class="co">#&gt; Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></a>
+<a class="sourceLine" id="cb30-10" title="10"><span class="co">#&gt; Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span></a>
+<a class="sourceLine" id="cb30-11" title="11"><span class="co">#&gt; Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span></a>
+<a class="sourceLine" id="cb30-12" title="12"><span class="co">#&gt; Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span></a>
+<a class="sourceLine" id="cb30-13" title="13"><span class="co">#&gt; Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span></a>
+<a class="sourceLine" id="cb30-14" title="14"><span class="co">#&gt; Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span></a>
+<a class="sourceLine" id="cb30-15" title="15"><span class="co">#&gt; Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span></a>
+<a class="sourceLine" id="cb30-16" title="16"><span class="co">#&gt; Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4</span></a>
+<a class="sourceLine" id="cb30-17" title="17"><span class="co">#&gt; Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3</span></a>
+<a class="sourceLine" id="cb30-18" title="18"><span class="co">#&gt; Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3</span></a>
+<a class="sourceLine" id="cb30-19" title="19"><span class="co">#&gt; Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</span></a>
+<a class="sourceLine" id="cb30-20" title="20"><span class="co">#&gt; Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4</span></a>
+<a class="sourceLine" id="cb30-21" title="21"><span class="co">#&gt; Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</span></a>
+<a class="sourceLine" id="cb30-22" title="22"><span class="co">#&gt; Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4</span></a>
+<a class="sourceLine" id="cb30-23" title="23"><span class="co">#&gt; Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span></a>
+<a class="sourceLine" id="cb30-24" title="24"><span class="co">#&gt; Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span></a>
+<a class="sourceLine" id="cb30-25" title="25"><span class="co">#&gt; Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span></a>
+<a class="sourceLine" id="cb30-26" title="26"><span class="co">#&gt; Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span></a>
+<a class="sourceLine" id="cb30-27" title="27"><span class="co">#&gt; Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2</span></a>
+<a class="sourceLine" id="cb30-28" title="28"><span class="co">#&gt; AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2</span></a>
+<a class="sourceLine" id="cb30-29" title="29"><span class="co">#&gt; Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4</span></a>
+<a class="sourceLine" id="cb30-30" title="30"><span class="co">#&gt; Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2</span></a>
+<a class="sourceLine" id="cb30-31" title="31"><span class="co">#&gt; Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span></a>
+<a class="sourceLine" id="cb30-32" title="32"><span class="co">#&gt; Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span></a>
+<a class="sourceLine" id="cb30-33" title="33"><span class="co">#&gt; Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></a>
+<a class="sourceLine" id="cb30-34" title="34"><span class="co">#&gt; Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</span></a>
+<a class="sourceLine" id="cb30-35" title="35"><span class="co">#&gt; Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</span></a>
+<a class="sourceLine" id="cb30-36" title="36"><span class="co">#&gt; Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span></a>
+<a class="sourceLine" id="cb30-37" title="37"><span class="co">#&gt; Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></a>
+<a class="sourceLine" id="cb30-38" title="38"><span class="kw">head</span>(mtcars)</a>
+<a class="sourceLine" id="cb30-39" title="39"><span class="co">#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span></a>
+<a class="sourceLine" id="cb30-40" title="40"><span class="co">#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span></a>
+<a class="sourceLine" id="cb30-41" title="41"><span class="co">#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span></a>
+<a class="sourceLine" id="cb30-42" title="42"><span class="co">#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span></a>
+<a class="sourceLine" id="cb30-43" title="43"><span class="co">#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></a>
+<a class="sourceLine" id="cb30-44" title="44"><span class="co">#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></a>
+<a class="sourceLine" id="cb30-45" title="45"><span class="co">#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span></a>
+<a class="sourceLine" id="cb30-46" title="46"><span class="kw">str</span>(mtcars)</a>
+<a class="sourceLine" id="cb30-47" title="47"><span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span></a>
+<a class="sourceLine" id="cb30-48" title="48"><span class="co">#&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...</span></a>
+<a class="sourceLine" id="cb30-49" title="49"><span class="co">#&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...</span></a>
+<a class="sourceLine" id="cb30-50" title="50"><span class="co">#&gt;  $ disp: num  160 160 108 258 360 ...</span></a>
+<a class="sourceLine" id="cb30-51" title="51"><span class="co">#&gt;  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...</span></a>
+<a class="sourceLine" id="cb30-52" title="52"><span class="co">#&gt;  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...</span></a>
+<a class="sourceLine" id="cb30-53" title="53"><span class="co">#&gt;  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...</span></a>
+<a class="sourceLine" id="cb30-54" title="54"><span class="co">#&gt;  $ qsec: num  16.5 17 18.6 19.4 17 ...</span></a>
+<a class="sourceLine" id="cb30-55" title="55"><span class="co">#&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...</span></a>
+<a class="sourceLine" id="cb30-56" title="56"><span class="co">#&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...</span></a>
+<a class="sourceLine" id="cb30-57" title="57"><span class="co">#&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...</span></a>
+<a class="sourceLine" id="cb30-58" title="58"><span class="co">#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</span></a>
+<a class="sourceLine" id="cb30-59" title="59"><span class="kw">names</span>(mtcars) <span class="co"># names of the variables in the data frame</span></a>
+<a class="sourceLine" id="cb30-60" title="60"><span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;</span></a>
+<a class="sourceLine" id="cb30-61" title="61"><span class="co">#&gt; [11] &quot;carb&quot;</span></a>
+<a class="sourceLine" id="cb30-62" title="62"></a>
+<a class="sourceLine" id="cb30-63" title="63"><span class="kw">length</span>(mtcars)</a>
+<a class="sourceLine" id="cb30-64" title="64"><span class="co">#&gt; [1] 11</span></a>
+<a class="sourceLine" id="cb30-65" title="65"></a>
+<a class="sourceLine" id="cb30-66" title="66"><span class="kw">str</span>(mtcars)</a>
+<a class="sourceLine" id="cb30-67" title="67"><span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span></a>
+<a class="sourceLine" id="cb30-68" title="68"><span class="co">#&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...</span></a>
+<a class="sourceLine" id="cb30-69" title="69"><span class="co">#&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...</span></a>
+<a class="sourceLine" id="cb30-70" title="70"><span class="co">#&gt;  $ disp: num  160 160 108 258 360 ...</span></a>
+<a class="sourceLine" id="cb30-71" title="71"><span class="co">#&gt;  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...</span></a>
+<a class="sourceLine" id="cb30-72" title="72"><span class="co">#&gt;  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...</span></a>
+<a class="sourceLine" id="cb30-73" title="73"><span class="co">#&gt;  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...</span></a>
+<a class="sourceLine" id="cb30-74" title="74"><span class="co">#&gt;  $ qsec: num  16.5 17 18.6 19.4 17 ...</span></a>
+<a class="sourceLine" id="cb30-75" title="75"><span class="co">#&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...</span></a>
+<a class="sourceLine" id="cb30-76" title="76"><span class="co">#&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...</span></a>
+<a class="sourceLine" id="cb30-77" title="77"><span class="co">#&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...</span></a>
+<a class="sourceLine" id="cb30-78" title="78"><span class="co">#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</span></a></code></pre></div>
 
 </div>
 </div>
@@ -461,7 +461,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapaper": false,
+"instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -471,10 +471,6 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
-},
-"history": {
 "link": null,
 "text": null
 },
@@ -493,7 +489,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
