@@ -3,16 +3,16 @@ title: "DS4B: Ongoing Tasks"
 author: "A. Fidalgo"
 date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%M")`'
 output:
-  rmdformats::readthedown:
-    css: custom_readthedown.css
-    number_sections: no
-    highlight: tango
   pdf_document:
     includes:
       in_header: 'preamble.tex'
     highlight: "tango"
     number_sections: yes
     toc: no
+  rmdformats::readthedown:
+    css: custom_readthedown.css
+    number_sections: no
+    highlight: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -104,7 +104,9 @@ If necessary, restart RStudio. At the restart, a Git thumbnail should appear in 
 Make a first attempt at designing a structure for your book. Create empty chapters as placeholders.
 
 
+## First steps in R
 
+Integrate the chapter on R as a calculator and the chapter on data structures in R.
 
 
 
