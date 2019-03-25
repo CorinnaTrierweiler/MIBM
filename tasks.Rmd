@@ -104,7 +104,9 @@ If necessary, restart RStudio. At the restart, a Git thumbnail should appear in 
 Make a first attempt at designing a structure for your book. Create empty chapters as placeholders.
 
 
+## First steps in R
 
+Integrate the chapter on R as a calculator and the chapter on data structures in R.
 
 
 
