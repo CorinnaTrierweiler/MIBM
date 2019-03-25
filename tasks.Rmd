@@ -3,16 +3,16 @@ title: "DS4B: Ongoing Tasks"
 author: "A. Fidalgo"
 date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%M")`'
 output:
+  rmdformats::readthedown:
+    css: custom_readthedown.css
+    number_sections: no
+    highlight: tango
   pdf_document:
     includes:
       in_header: 'preamble.tex'
     highlight: "tango"
     number_sections: yes
     toc: no
-  rmdformats::readthedown:
-    css: custom_readthedown.css
-    number_sections: no
-    highlight: tango
 ---
 
 ```{r setup, include=FALSE}
