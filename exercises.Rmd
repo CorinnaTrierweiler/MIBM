@@ -1,0 +1,92 @@
+---
+title: "DS4B: Exercises"
+author: "A. Fidalgo"
+date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%M")`'
+output:
+  rmdformats::readthedown:
+    css: custom_readthedown.css
+    number_sections: no
+    highlight: tango
+  pdf_document:
+    includes:
+      in_header: 'preamble.tex'
+    highlight: "tango"
+    number_sections: yes
+    toc: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The following are a question sets to help master the concepts that we discussed.
+
+# Lecture on March 22
+
+## Global chunk options
+
+We can use options, e.g., `echo`, to control the output and the format of the R chunks.  
+Suppose you want to use the same options for all the R chuncks. It would be tedious to write it _n_ times!    
+How would you set that option once for the whole document? (Hint: not a YAML issue.)    
+How would you make an exception for one specific R chunk?
+
+
+## Yet another output format for the same `Rmd` file
+
+The YAML of this `Rmd` file contains the following code.
+
+```{r, eval=FALSE}
+output:
+  prettydoc::html_pretty:  
+    theme: architect  
+    highlight: github
+  pdf_document:
+    highlight: tango
+    number_sections: no
+    toc: no  
+```
+
+If you `Knit` the document as such, it will almost certainly produce an error. Why?   
+Make sure you can `Knit` this `Rmd` file with **all** the output options.
+
+## Dynamic document 1.0
+
+There is a dynamic element in the title part of this document.   
+Guess how it works and modify it at your will.
+
+## Line break in `Rmd` file
+
+The text in the `Rmd` file looks exactly like copied below as code.
+Why doesn't the output file (whatever its type) reflect the line break?
+
+```{r, eval=FALSE, echo= TRUE}
+The text in the `Rmd` file looks exactly like copied below as code.
+Why doesn't the output file (whatever its type) reflect the line break?
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+
+
+

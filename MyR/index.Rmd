@@ -52,7 +52,7 @@ So, the question arises of why one should even bother to write on the topic. The
 
 1. There is no better way of learning data science and R than **doing oneself** the pages of code.  
 2. The material gathered here is a **personal selection** made on what I judge most relevant for my work, the most important techniques in general or, sometimes, the least obvious for the regular practitioner.  
-3. These notes serve as a **record** of what I did in the domain so that I can easily access it in the future.
+3. These notes serve as an **archive** of what I did in the domain so that I can easily access it in the future.
 
 
 

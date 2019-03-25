@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 4 R as a calculator | Learning Data Science in R</title>
+  <title>Chapter 9 Conclusion | Learning Data Science in R</title>
   <meta name="description" content="These are notes gathering my experience in data science with R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 4 R as a calculator | Learning Data Science in R" />
+  <meta property="og:title" content="Chapter 9 Conclusion | Learning Data Science in R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 R as a calculator | Learning Data Science in R" />
+  <meta name="twitter:title" content="Chapter 9 Conclusion | Learning Data Science in R" />
   
   <meta name="twitter:description" content="These are notes gathering my experience in data science with R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="custom-ouptut.html">
-<link rel="next" href="datastructures.html">
+<link rel="prev" href="conditions.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -199,67 +199,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rcalc" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> R as a calculator</h1>
-<p>R can be used as a simple calculator. For instance, 45+17=62 .<br />
-Here are a few more examples of the commands.</p>
-<div id="usual-operators" class="section level2">
-<h2><span class="header-section-number">4.1</span> Usual operators</h2>
-<div id="simple-operations" class="section level3">
-<h3><span class="header-section-number">4.1.1</span> Simple operations</h3>
-<p>The usual symbols <code>+, -, *, /</code> apply .</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span>
-<span class="co">#&gt; [1] 8</span>
-<span class="dv">56</span><span class="op">/</span><span class="st"> </span><span class="dv">6</span>
-<span class="co">#&gt; [1] 9.333333</span></code></pre>
-</div>
-<div id="parentheses" class="section level3">
-<h3><span class="header-section-number">4.1.2</span> Parentheses</h3>
-<p>The parentheses work as expected. But they are also a common source of error when they are not matched.</p>
-<pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">4</span><span class="op">+</span><span class="dv">3</span>)<span class="op">*</span>((<span class="dv">7-3</span>)<span class="op">/</span>(<span class="dv">1</span><span class="fl">+.05</span>))
-<span class="co">#&gt; [1] 26.66667</span></code></pre>
-<p>The next expression will generate an error and prevent the compilation of the whole book.</p>
-<pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">4</span><span class="op">+</span><span class="dv">3</span>)<span class="op">*</span>((<span class="dv">7-3</span><span class="op">/</span>(<span class="dv">1</span><span class="fl">+.05</span>))</code></pre>
-</div>
-<div id="exponents" class="section level3">
-<h3><span class="header-section-number">4.1.3</span> Exponents</h3>
-<p>There are two ways of expressing the power of a number: <code>^</code> and <code>**</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span><span class="op">^</span><span class="dv">4</span>
-<span class="co">#&gt; [1] 81</span>
-<span class="dv">3</span><span class="op">**</span><span class="dv">4</span>
-<span class="co">#&gt; [1] 81</span></code></pre>
-</div>
-</div>
-<div id="unusual-operators" class="section level2">
-<h2><span class="header-section-number">4.2</span> Unusual operators</h2>
-<div id="special-operations" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> Special operations</h3>
-<p>The symbols <code>%/%</code> and <code>%%</code> return the entire part of the result of the division and the rest of the division, respectively.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">56</span><span class="op">/</span><span class="dv">6</span>
-<span class="co">#&gt; [1] 9.333333</span>
-<span class="dv">56</span><span class="op">%/%</span><span class="dv">6</span>
-<span class="co">#&gt; [1] 9</span>
-<span class="dv">56</span><span class="op">%%</span><span class="dv">6</span>
-<span class="co">#&gt; [1] 2</span></code></pre>
-</div>
-</div>
-<div id="usual-functions" class="section level2">
-<h2><span class="header-section-number">4.3</span> Usual functions</h2>
-<p>The common functions found in any calculator also have an equivalent on R. The following examples need no further comment.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">100</span>)
-<span class="co">#&gt; [1] 4.60517</span>
-<span class="kw">sqrt</span>(<span class="dv">100</span>)
-<span class="co">#&gt; [1] 10</span></code></pre>
+<div id="conclusion" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Conclusion</h1>
+<p>We did a great book!</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="custom-ouptut.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="datastructures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conditions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

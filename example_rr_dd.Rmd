@@ -1,9 +1,9 @@
 ---
 title: "Illustrating 'rr' and 'dd' with a Rmd file"
 author: "A. Fidalgo"
-date: 'Last update: `r format(Sys.time(), "%H:%m, %B %d, %Y")`'
+date: 'Last update: `r format(Sys.time(), "%H:%M, %B %d, %Y")`'
 output:
-  bookdown::pdf_document2:
+  pdf_document:
     highlight: "tango"
     number_sections: yes
     toc: yes
@@ -20,12 +20,12 @@ output:
   word_document:
     toc: no
     toc_depth: '2'
-  html_document:
-    toc: no
-  pdf_document:
+  bookdown::pdf_document2:
     highlight: "tango"
     number_sections: yes
     toc: yes
+  html_document:
+    toc: no
 ---
 
 ```{r setup, include=FALSE}
@@ -35,14 +35,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction {#intro}
 
+This is my introduction. I'm writing in Markdown even though I didn't know that I knew it.
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 library(readxl)
 df <- read_excel("my_age_data.xlsx")
 2 * 8
 ```
 
-The average age in this class `r round(mean(df$age),2)` (and the oldest person was `r max(df$age)`).
+
 
 # Middle section
 

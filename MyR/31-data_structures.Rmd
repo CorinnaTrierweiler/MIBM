@@ -25,6 +25,29 @@ Note that if vector elements not all of the same type, R makes coercion.  In tha
 Here are a few illustrations.
 
 ```{r}
+trop1 <- c(24, 23, 23, 24, 24)
+trop1
+
+trop2 <- c("mi", "ga", "tr", "ba", "ha")
+trop2
+
+trop3 <- c(24, 24, "trierweiler")
+trop3
+typeof(trop3)
+
+var <- c(2)
+var
+
+tar <- c("2")
+tar
+
+var + 30
+#tar + 30
+```
+
+
+
+```{r}
 log_vector <- c(TRUE, FALSE, FALSE)
 
 int_vector <- c(12, 10, 3, "tre")

@@ -17,6 +17,7 @@ h2{
     color: #2E86C1  ;
     font-family: palatino;
     margin-bottom: 0px;
+    /*font-variant: small-caps;*/
 }
 
 h1{
@@ -25,6 +26,7 @@ h1{
     text-align: center;
     margin-top: 50px;
     margin-bottom: 15px;
+    /*font-variant: small-caps;*/
 }
 
 #nav-top span.glyphicon {
@@ -62,4 +64,6 @@ p {
   padding-left: 15px;
   text-align: justify;
 }
+
+
 
