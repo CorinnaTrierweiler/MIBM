@@ -3,16 +3,16 @@ title: "DS4B: Exercises"
 author: "A. Fidalgo"
 date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%M")`'
 output:
-  rmdformats::readthedown:
-    css: custom_readthedown.css
-    number_sections: no
-    highlight: tango
   pdf_document:
     includes:
       in_header: 'preamble.tex'
     highlight: "tango"
     number_sections: yes
     toc: no
+  rmdformats::readthedown:
+    css: custom_readthedown.css
+    number_sections: no
+    highlight: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -21,21 +21,170 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The following are a question sets to help master the concepts that we discussed.
 
-# Lecture on March 22
+# Exercises on sub-setting
+
+## Sub-setting with indices
+
+For this question, use the built-in vector `letters` to create the following vectors.
+
+  - a = (a),
+  - b = (a, b, c),
+  - c = (a, d, e, f, ...), all but (b, c),
+  - d = (a, b, c, ..., w), all but the last three,
+  - c = (a, d, g, j, ...), every third letter.
+  
+
+
+## Sub-setting with conditions
+
+The function `runif` creates random numbers from a uniform (0,1) distribution. The function `floor` gives the highest integer of a number.  
+
+  i. Set a seed for your random numbers (`setseed`).
+  i. Create a vector 'data' of 50 random numbers, uniformly distributed between 80 and 120.
+  ii. Take a subsample of 'data' for which the values are below 90. How many are there?
+  iii. Take a subsample of 'data' for which the values are below 90 or above 105.  
+  iii. Take a subsample of 'data' for which the values are even.
+  iii. Take a subsample of 'data' for which the values are above the sample average.
+  iii. What are the indexes of the even elements of 'data' (hint: use `which`)?
+
+
+
+## Sub-setting data frames
+
+  i. Load the built-in data set `iris` and inspect it.
+  ii. Calculate the maximum value of `Sepal.Length`.
+  iii. Create a data frame with every 5th observation of the original data set.
+  iii. Create a data frame with only the sepal length and width.
+  iii. Take a sample of 10 observations from iris (hint: use `sample`).
+  iii. Create a data frame with the observations with the largest and the smallest petal width.
+  iii. With the data frame with the observations with the largest petal width, create a data frame with the smallest sepal width. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Exercises on simple vectors creation
+
+The following exercises are intended to illustrate some basic functions in R, in particular when applied to the most common data structure, namely the vector.  
+Even if we do not aim at the most elegant answers, we should aim at efficient ways. Brute-force solutions are strictly forbidden.
+
+
+## Creation of simple vectors
+
+Create the following simple vectors.
+
+  - \(a = (1, 2, 3, ..., 15)\),
+  - \(b = (15, 14, 13, ..., 0, -1, -2)\),
+  - \(c = (15, 14, 13, ..., 10, 9, -9, -10, ..., -13, -14, -15)\)
+
+
+
+## Empty vector
+
+Create an empty vector with 30 numeric values. Check its type and its length.   
+(Hint: use `numeric()`.)
+
+
+## Character vector
+
+Create the vector `participants` with the names of the participants in the class.
+
+
+## Simple manipulations
+
+Consider the following scores at a test.
+\[(60, 84, 65,67,75,72,80,85,63,82,70,75)\]
+Calculate the mean of the sample.  
+Recall the formula for the z-score of an observation:
+\[z_i=\frac{x_i-\mu}{\sigma}\]
+Create a vector with the z-score of each grade. 
+
+
+
+## Simple calculations
+
+Calculate the following expressions, where \(n\) is the number of elements in the series.
+\[\frac{1}{n}\sum_{i=5}^{55} (i^2 - 3i)\]
+\[\frac{1}{n}\sum_{i=1}^{10} \left(\frac{3^i}{3i} + \sqrt{3i}\right)\]
+
+
+
+## Create vectors with `rep`
+
+For the following questions, you may want to check the help on the function `rep`.  
+Start by creating the vector
+
+  - dna = (A, C, G, T).
+
+Then, create the following vectors:
+
+  - a = (A, C, G, T, A, C, G, T, A, C, G, T, ..., A, C, G, T) where there are 12 A's as shown.
+  - b = (A, C, G, T, A, C, G, T, A, C, G, T, ..., A, C) where there are 15 A's as shown; the last element of the vector being C.
+  - c = (A, ..., A, C, ..., C, G, ..., G, T, ..., T) where there are 12 A's, 15 C's, 30 G's and 4 T's, in the order shown.
+
+
+
+## Create vectors with `seq`
+
+For the following questions, you may want to check the help on the function  `seq`.  
+Create the following vectors:
+
+  - \(a = (1, 2, 3, ..., 15)\),
+  - \(b = (15, 14, 13, ..., 0, -1, -2)\),
+  - \(c = (1, 1.2, 1.4, ..., 8)\).
+
+
+
+Create the following vectors, potentially based on auxiliary vectors.
+
+  - \(d = (0.5^3 1.3^1, 0.5^6 1.3^4, ..., 0.5^{36} 1.3^{34})\),
+  - \(e = (5, \frac{5^2}{2}, \frac{5^3}{3}, ..., \frac{5^{25}}{25})\).
+  
+
+
+Use the function `all.equal` to check that the last elements of each vector are indeed \(`r 0.5^36*1.3^34`\) and \(`r 5^25/25`\), respectively.
+
+## Use `paste` in vector creation
+
+For the following questions, you may want to check the help on the function  `paste`.  
+Create the following vectors:
+
+  - a = (City 1, City 2, ..., City 6),
+  - b = (n1, n2, ..., n6)
+  - b = (Gender=M, Gender=F, Gender=M, Gender=F, Gender=M, Gender=F)
+
+
+
+
+
+
+
+
+
+
+# Exercises on `.Rmd` files
 
 ## Global chunk options
 
 We can use options, e.g., `echo`, to control the output and the format of the R chunks.  
-Suppose you want to use the same options for all the R chuncks. It would be tedious to write it _n_ times!    
+Suppose you want to use the same options for all the R chunks. It would be tedious to write it _n_ times!    
 How would you set that option once for the whole document? (Hint: not a YAML issue.)    
 How would you make an exception for one specific R chunk?
 
 
-## Yet another output format for the same `Rmd` file
+## Yet another output format for the same `.Rmd` file
 
-The YAML of this `Rmd` file contains the following code.
+The YAML of this `.Rmd` file contains the following code.
 
-```{r, eval=FALSE}
+```yaml
 output:
   prettydoc::html_pretty:  
     theme: architect  
@@ -47,14 +196,14 @@ output:
 ```
 
 If you `Knit` the document as such, it will almost certainly produce an error. Why?   
-Make sure you can `Knit` this `Rmd` file with **all** the output options.
+Make sure you can `Knit` this `.Rmd` file with **all** the output options.
 
 ## Dynamic document 1.0
 
 There is a dynamic element in the title part of this document.   
 Guess how it works and modify it at your will.
 
-## Line break in `Rmd` file
+## Line break in `.Rmd` file
 
 The text in the `Rmd` file looks exactly like copied below as code.
 Why doesn't the output file (whatever its type) reflect the line break?
