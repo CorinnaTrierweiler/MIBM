@@ -16,7 +16,7 @@ description: "These are notes gathering my experience in data science with R."
 knitr::opts_chunk$set(echo = TRUE,
                       cache = TRUE,
                       collapse= TRUE,
-                      comment = "#>")
+                      comment = "#R>")
 
 library(tufte)
 library(tidyverse)

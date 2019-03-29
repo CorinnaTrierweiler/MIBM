@@ -1,4 +1,4 @@
-# (PART) Source file and output files {-}
+# (PART) Source and output files {-}
 
 # Rmd files {#rmd}
 
@@ -95,13 +95,34 @@ There are two main ways to type math in Latex:
   - in the text, surrounded by special delimiters, `\( math \)` (alternatively, one can use the deprecated `$ math $`),
   - in an equation, surrounded by special delimiters, `\[ math equation \]`, or in a dedicated environment such as `\begin{equation} math equation \end{equation}` (also deprecated, `$$ math equation $$`).
 
-[
-Complete here with:  
+Math format is usually distinct from the text format. For instance, compare a^2^ + b^2^ = c^2^ (simple markdown) to \(a^2 + b^2 = c^2\) (Latex). Notice, however, that most mathematical symbols are not supported by markdown. This why basic knowledge of Latex is essential for producing documents with math formula.   
+The first part of that knowledge consists in the list of Latex symbols. These are typed into a document starting with a slash `\`. For instance, the Latex symbol \(\alpha\) is produced by the code `\alpha` while \(\sum\) is given by `\sum`.   
+Superscripts and subscripts are produced with the characters `^` and `_`, respectively, and the content of the super- and subscripts enclosed within `{ }`. For instance, \(x_{2}^{3}\) is produced by the code `x_{2}^{3}` (or `x^{3}_{2}`) and \(\sum_{i=1}^{4}\) is given by `\sum_{i=1}^{4}`.  
+A comprehensive list of symbols (some of them requiring special Latex packages) can be found in @latexlist. Shorter lists can be found online, including on [wiki](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols).  
+A web-based application helps beginners by offering suggestions to a hand-drawn symbol, [detexify](http://detexify.kirelabs.org/classify.html).    
+A second bulk in the knowledge of Latex is the understanding of special environments. But then, if a document requires lots of special Latex environments, then `.Rmd` files are not the most appropriate type of files to use.  
+Some of these environments, however, have a perfect integration in `.Rmd` files, such as the most common, the equation. Here is an example, given by the code
 
-  . examples of inline code and an equation,  
-  . a reference for Latex,  
-  . maybe the drawing interpreter.
-]
+```markdown
+\[
+\sum_{i=0}^{\infty} ak^{i} = \frac{a}{1-k} \text{, for }  \lvert k \rvert < 1
+\]
+```
+\[
+\sum_{i=0}^{\infty} ak^{i} = \frac{a}{1-k} \text{, for }  \lvert k \rvert < 1
+\]
+
+
+## Include pictures
+
+Some words about this topic.
+
+
+## Include references
+
+Some words about this topic.
+
+
 
 
 

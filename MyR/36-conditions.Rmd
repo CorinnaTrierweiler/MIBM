@@ -73,7 +73,7 @@ if (condition_1) {
 We can use as many `else if` statements as we want.  
 Here is an example with only one `else if`
 ```{r}
-gains<- c(10, 3,-5,0,-4,12,4)
+gains <- c(10, 3,-5,0,-4,12,4)
 gains[1] <- -10 # change the first element of gains
 sum(gains)
 if (sum(gains) > 0) {
@@ -123,8 +123,7 @@ TRUE & FALSE
 
 Notice that what R looks for in a condition is a either a TRUE or a FALSE.  
 If it encounters a TRUE, it executes the commands, otherwise, it doesn't.  
-Remember there are many ways to obtain one of these two logicals.  
-Any of these ways will work as a condition.  
+Remember there are many ways to obtain one of these two logicals. Any of these ways will work as a condition.  
 Here are examples of less trivial ways of writing a condition 
 ```{r}
 gains<- c(10, 3,-5,0,-4,12,4)

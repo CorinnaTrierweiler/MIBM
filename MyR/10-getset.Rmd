@@ -1,7 +1,4 @@
-# (PART) Getting started {-}
-
-
-# Getting set {#getset}
+# Getting started {#getsarted}
 
 
 

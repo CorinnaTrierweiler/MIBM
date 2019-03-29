@@ -58,6 +58,18 @@ log(100)
 sqrt(100)
 ```
 
+## Unusual functions
+
+There are several other functions applied to numbers that one does not usually find in a calculator.  
+A few examples below:
+
+```{r}
+# floor / ceiling for the closest integer
+floor(13.47)
+ceiling(13.47)
+```
+
+
 
 
 

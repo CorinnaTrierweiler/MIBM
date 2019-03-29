@@ -3,16 +3,16 @@ title: "DS4B: Ongoing Tasks"
 author: "A. Fidalgo"
 date: '**Last update:** `r format(Sys.time(), "%B %d, %H:%M")`'
 output:
-  rmdformats::readthedown:
-    css: custom_readthedown.css
-    number_sections: no
-    highlight: tango
   pdf_document:
     includes:
       in_header: 'preamble.tex'
     highlight: "tango"
     number_sections: yes
     toc: no
+  rmdformats::readthedown:
+    css: custom_readthedown.css
+    number_sections: no
+    highlight: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -28,12 +28,34 @@ A preview of the HTML file, which is easier to navigate, is available:
  [preview html here.](https://htmlpreview.github.io/?https://github.com/AntonioFidalgo/MIBM/blob/master/tasks.html)
 
 
-# Homework for March 29
 
+# Lecture on March 29
+
+## Integrate the material
+
+On the topics (see notes):
+
+  - data structures,
+  - simple functions,
+  - sub-setting,
+  - conditions,
+  - functions (time allowing).
 
 ## Exercises
 
-Check out the `Exercises.pdf` (or other format) file and answer the current set of exercises.
+Check out the `Exercises.pdf` (or other format) file and answer the current set of exercises on:
+
+  - simple vectors creation,
+  - sub-setting,
+  - functions (time allowing). 
+
+# Homework for March 29
+
+
+## Exercises 
+
+Check out the `Exercises.pdf` (or other format) file and answer the current set of exercises on 
+
 
 
 ## Set up GitHub for team collaboration

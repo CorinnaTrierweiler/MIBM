@@ -2,9 +2,9 @@
 
 ## Generalities about subsetting
 There are three subsetting operators: `$`, `[]` and `[[]]`.  
-Some functions also allow to create subsets: we'll see that later.  
+Some functions also allow to create subsets. 
 We can combine subsetting and assignment to change some parts of an object.  
-Complement to `str()`.
+Sub-setting is better used in complement with `str()`.
 ```{r}
 va <- c(13.1, -15.2, 0.3, 2.4, 10.5, -3.6, 9.7) # create the vector va
 str(va)
@@ -19,7 +19,7 @@ Can be used with:
     - positive or negative values,
     - many values in a vector,
     - logical, `NA`,
-    - character vectors when names.
+    - character vectors when names exist.
 
 ### On a vector
 Here are a few examples of that object used on a vector.
@@ -53,7 +53,7 @@ mylist[1] # first element of the list
 class(mylist[1])
 mylist[[3]][3]
 ```
-Notice that the result of this subsetting is a r class(mylist[1])!
+Notice that the result of this subsetting is a `r class(mylist[1])`!
 
 ### On a matrix
 

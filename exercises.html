@@ -1567,6 +1567,9 @@ $(document).ready(function () {
     <h2><a href="#content">DS4B: Exercises</a></h2>
     <div id="text-table-of-contents">
       <ul>
+      <li><a href="#exercises-on-functions">Exercises on functions</a><ul>
+      <li><a href="#roots-of-quadratic-equation">Roots of quadratic equation</a></li>
+      </ul></li>
       <li><a href="#exercises-on-sub-setting">Exercises on sub-setting</a><ul>
       <li><a href="#sub-setting-with-indices">Sub-setting with indices</a></li>
       <li><a href="#sub-setting-with-conditions">Sub-setting with conditions</a></li>
@@ -1594,6 +1597,18 @@ $(document).ready(function () {
 
 <div id="main">
 <p>The following are a question sets to help master the concepts that we discussed.</p>
+<div id="exercises-on-functions" class="section level1">
+<h1>Exercises on functions</h1>
+<div id="roots-of-quadratic-equation" class="section level2">
+<h2>Roots of quadratic equation</h2>
+<p>A quadratic equation of the generic form</p>
+<p><span class="math display">\[ax^2 + bx + c =0\]</span></p>
+<p>has two real roots, if they exist, given by the formula:</p>
+<p><span class="math display">\[x_{1,2}=\frac{ -b \pm\sqrt{b^2 -4ac}}{2a}\]</span></p>
+<p>Write a function that gives the real roots of a quadratic equation.<br />
+Test your function on the various quadratic equations, including: <span class="math display">\[\begin{split}5x^2 + 6x + 1 = 0\\ 5x^2 + 2x + 1 = 0\end{split}\]</span></p>
+</div>
+</div>
 <div id="exercises-on-sub-setting" class="section level1">
 <h1>Exercises on sub-setting</h1>
 <div id="sub-setting-with-indices" class="section level2">
@@ -1611,7 +1626,7 @@ $(document).ready(function () {
 <h2>Sub-setting with conditions</h2>
 <p>The function <code>runif</code> creates random numbers from a uniform (0,1) distribution. The function <code>floor</code> gives the highest integer of a number.</p>
 <ol style="list-style-type: lower-roman">
-<li>Set a seed for your random numbers (<code>setseed()</code>).</li>
+<li>Set a seed for your random numbers (<code>setseed</code>).</li>
 <li>Create a vector ‘data’ of 50 random numbers, uniformly distributed between 80 and 120.</li>
 <li>Take a subsample of ‘data’ for which the values are below 90. How many are there?</li>
 <li>Take a subsample of ‘data’ for which the values are below 90 or above 105.<br />
@@ -1718,14 +1733,14 @@ How would you make an exception for one specific R chunk?</p>
 <div id="yet-another-output-format-for-the-same-.rmd-file" class="section level2">
 <h2>Yet another output format for the same <code>.Rmd</code> file</h2>
 <p>The YAML of this <code>.Rmd</code> file contains the following code.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">output<span class="op">:</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="st">  </span>prettydoc<span class="op">::</span>html_pretty<span class="op">:</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="st">    </span>theme<span class="op">:</span><span class="st"> </span>architect  </a>
-<a class="sourceLine" id="cb1-4" title="4">    highlight<span class="op">:</span><span class="st"> </span>github</a>
-<a class="sourceLine" id="cb1-5" title="5">  pdf_document<span class="op">:</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="st">    </span>highlight<span class="op">:</span><span class="st"> </span>tango</a>
-<a class="sourceLine" id="cb1-7" title="7">    number_sections<span class="op">:</span><span class="st"> </span>no</a>
-<a class="sourceLine" id="cb1-8" title="8">    toc<span class="op">:</span><span class="st"> </span>no  </a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  prettydoc:<span class="fu">:html_pretty:</span><span class="at">  </span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="fu">theme:</span><span class="at"> architect  </span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="fu">highlight:</span><span class="at"> github</span></a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="fu">pdf_document:</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="fu">highlight:</span><span class="at"> tango</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="fu">number_sections:</span><span class="at"> </span><span class="ch">no</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="fu">toc:</span><span class="at"> </span><span class="ch">no</span><span class="at">  </span></a></code></pre></div>
 <p>If you <code>Knit</code> the document as such, it will almost certainly produce an error. Why?<br />
 Make sure you can <code>Knit</code> this <code>.Rmd</code> file with <strong>all</strong> the output options.</p>
 </div>
@@ -1748,7 +1763,7 @@ Guess how it works and modify it at your will.</p>
 
 <div id="postamble" data-toggle="wy-nav-shift" class="status">
 <p class="author"><span class="glyphicon glyphicon-user"></span> A. Fidalgo</p>
-<p class="date"><span class="glyphicon glyphicon-calendar"></span> <strong>Last update:</strong> March 26, 20:21</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> <strong>Last update:</strong> March 29, 08:50</p>
 </div>
 
 
